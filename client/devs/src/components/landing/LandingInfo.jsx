@@ -18,7 +18,7 @@ const LandingInfo = () => {
           개발자들과 소통하고 나만의 스토리를 뽐내세요!
         </LandingInfoSmall>
 
-        <LandingImg />
+        <LandingImg src='img/landing.png' />
       </LandingInfoDiv>
     </>
   );

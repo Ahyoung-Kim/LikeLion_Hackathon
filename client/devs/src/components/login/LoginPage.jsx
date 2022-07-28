@@ -1,6 +1,7 @@
 import React from 'react';
 import { 
-  LandingDiv, LandingContent, LandingFooter
+  LandingDiv, LandingContent, LandingFooter,
+  LoginImg1, LoginImg2
 } from '../../styledComponents';
 import LandingTextComp from '../landing/LandingTextComp';
 import LoginInput from './LoginInput';
@@ -11,6 +12,10 @@ const LoginPage = () => {
       <LandingDiv>
 
         <LandingTextComp />
+
+        <LoginImg1 src="img/login-2.png" />
+
+        <LoginImg2 src="img/login-1.png" />
 
         <LandingContent>
           <LoginInput />
@@ -23,4 +28,4 @@ const LoginPage = () => {
   );
 };
 
-export default React.memp(LoginPage);
+export default React.memo(LoginPage);

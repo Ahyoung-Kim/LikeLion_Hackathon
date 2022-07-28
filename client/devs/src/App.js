@@ -11,7 +11,7 @@ const App = () => {
   return (
     <div className='font'>
       <Reset />
-
+      
       <Routes>
         {/* Landing Page */}
         <Route path="/landing" element={<LandingPage />} />

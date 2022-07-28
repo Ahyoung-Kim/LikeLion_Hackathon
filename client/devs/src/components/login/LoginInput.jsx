@@ -76,8 +76,7 @@ const LoginInput = () => {
           </RegisterLi>
         </RegisterUl>
 
-        <RegisterBtn onClick={onLogin}
-          style={{marginTop: '60px'}}>
+        <RegisterBtn onClick={onLogin}>
           로그인
         </RegisterBtn>
 
