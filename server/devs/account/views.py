@@ -2,6 +2,9 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.generics import CreateAPIView
+from rest_framework.permissions import AllowAny
+
 from django.http import Http404
 
 from .serializers import UserSerializer
@@ -24,3 +27,19 @@ class Test(APIView):
       return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class UserView(CreateAPIView):
+    serializer_class = UserSerializer
+    permission_classes = (AllowAny,)
+
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save() # serializer 내부의 create() 호출
+        status_code = status.HTTP_201_CREATED # 성공
+        response = {
+            'success': "true",
+            'status code': status_code,
+            'message': "user registered successfully",
+        }
+        return Response(response, status=status_code)
