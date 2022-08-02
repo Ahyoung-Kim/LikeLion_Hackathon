@@ -9,9 +9,7 @@
 
 ```bash
 $ cd client/devs
-$ npm i @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome axios http-proxy-middleware react-router-dom styled-components styled-reset
-
-// 설치해도 안되면 package.json의 dependencies 보고 위에꺼 중에 안 깔려있는 거 설치하세용
+$ npm install
 ```
 
 ### 장고 패키지 설치
