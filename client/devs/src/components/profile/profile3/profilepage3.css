@@ -1,0 +1,43 @@
+
+.profile3-content{
+    width: 90vw;
+    background-color: rgba(255, 224, 130, 0.3);
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+
+
+.skill{
+    width: 80vw;
+}
+
+.skill-header{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.skill-name{
+    justify-self: start;
+    font-weight: bold;
+}
+
+.skill-specific{
+    display: flex;
+    background-color: white;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+.skill-specific > p{
+    margin-left: 60px;
+}
+
+.check-icon{
+    margin-left: 40px;
+}
