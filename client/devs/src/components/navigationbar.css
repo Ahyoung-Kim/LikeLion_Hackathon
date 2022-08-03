@@ -1,0 +1,48 @@
+@media screen and (max-width: 985px) {
+    .nav-icon{
+        display: none;
+    }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+
+.navbar{
+    background-color: #FFE082;
+}
+
+.nav-logo{
+    width: 160px;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+}
+.nav-icon{
+    margin-left: 30px;
+    color: rgb(36, 39, 37);
+}
+
+.nav-searchbar{
+    margin-left: 200px;
+
+}
+.maintitle{
+    font-size: 26px;   
+}
+
+.subtitle{
+    font-size: 16px;
+}
+
+.main-search-bar{
+    margin-top: 4%;
+    display: flex;
+    width: 60%;
+    height: 65px;
+    margin: auto;
+}
+
+.search-div{
+    margin-top: 4%;
+}
+
+
