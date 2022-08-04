@@ -1,8 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 import uuid
+from django.conf import settings
 
 # Create your models here.
+
+
 class UserManager(BaseUserManager):
 
     def create_user(self, name, email, nickname, password=None):
@@ -13,8 +16,8 @@ class UserManager(BaseUserManager):
             email=self.normalize_email(email),
             nickname=nickname,
         )
-        user.set_password(password) # 비밀번호를 hash로 저장 (보안)
-        
+        user.set_password(password)  # 비밀번호를 hash로 저장 (보안)
+
         user.save(using=self._db)
         return user
 
@@ -30,9 +33,10 @@ class UserManager(BaseUserManager):
 
         return user
 
+
 class User(AbstractBaseUser, PermissionsMixin):
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) 
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     email = models.EmailField(
         verbose_name='email address',
         max_length=100,
@@ -48,9 +52,14 @@ class User(AbstractBaseUser, PermissionsMixin):
         unique=True,
     )
     name = models.CharField(max_length=10)
-    
+
+    # followers = models.ManyToManyField(
+    #     settings.AUTH_USER_MODEL,
+    #     related_name='followings'
+    # )
+
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['nickname', 'name',] 
+    REQUIRED_FIELDS = ['nickname', 'name', ]
 
     objects = UserManager()
 

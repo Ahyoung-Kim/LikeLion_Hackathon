@@ -1,9 +1,11 @@
 from django.db import models
+from django.conf import settings
 
 
 class UserDetails(models.Model):
-    email = models.ForeignKey(
-        "account.User", related_name="details_email", on_delete=models.CASCADE, db_column="email")
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     hashtag = models.CharField(max_length=100, null=True)  # 해시태그
@@ -15,16 +17,18 @@ class UserDetails(models.Model):
 
 
 class UserOngoing(models.Model):  # 현재 진행 중
-    email = models.ForeignKey(
-        "account.User", related_name="%(class)_email", on_delete=models.CASCADE, db_column="email")
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     ongoing = models.TextField()
 
 
 class UserSkills(models.Model):  # 기술스택
-    email = models.ForeignKey(
-        "account.User", related_name="useremail", on_delete=models.CASCADE, db_column="email")
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -32,20 +36,27 @@ class UserSkills(models.Model):  # 기술스택
 class UserSkillsLan(models.Model):  # 기술스택 - Programming Language
     id = models.BigAutoField(primary_key=True)
     post = models.ForeignKey(
-        "UserSkills", related_name="Language", on_delete=models.CASCADE, db_column="Language")
+        "UserSkills",
+        related_name="post_anguage",
+        on_delete=models.CASCADE,
+        db_column="post_anguage")
     language = models.CharField(max_length=30)
 
 
 class UserSkillsFram(models.Model):  # 기술스택 - Framework / Library
     id = models.BigAutoField(primary_key=True)
     post = models.ForeignKey(
-        "UserStudy", related_name="Language", on_delete=models.CASCADE, db_column="Language")
+        "UserSkills",
+        related_name="post_framework",
+        on_delete=models.CASCADE,
+        db_column="post_framework")
     framework = models.CharField(max_length=30)
 
 
 class UserStudy(models.Model):  # 개인공부
-    email = models.ForeignKey(
-        "account.User", related_name="useremail", on_delete=models.CASCADE, db_column="email")
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -53,29 +64,39 @@ class UserStudy(models.Model):  # 개인공부
 class UserStudyCS(models.Model):  # 개인공부 - CS
     id = models.BigAutoField(primary_key=True)
     post = models.ForeignKey(
-        "UserStudy", related_name="CS", on_delete=models.CASCADE, db_column="CS")
+        "UserStudy",
+        related_name="CS",
+        on_delete=models.CASCADE,
+        db_column="post_cs")
     CS = models.CharField(max_length=30)
 
 
 class UserStudyPS(models.Model):  # 개인공부 - PS
     id = models.BigAutoField(primary_key=True)
     post = models.ForeignKey(
-        "UserStudy", related_name="PS", on_delete=models.CASCADE, db_column="PS")
+        "UserStudy",
+        related_name="PS",
+        on_delete=models.CASCADE,
+        db_column="post_ps")
     PS = models.CharField(max_length=30)
 
 
-class UserCert(models.Model):
-    email = models.ForeignKey(
-        "account.User", related_name="useremail", on_delete=models.CASCADE, db_column="email")
+class UserCert(models.Model):  # 자격증
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    certification = models.CharField(max_length=100, null=True)  # 자격증
+    certification = models.CharField(max_length=100, null=True)
 
 
 class UserCareer(models.Model):
     id = models.BigAutoField(primary_key=True)
     email = models.ForeignKey(
-        "account.User", related_name="useremail", on_delete=models.CASCADE, db_column="email")
+        settings.AUTH_USER_MODEL,
+        related_name="user_email",
+        on_delete=models.CASCADE,
+        db_column="user_email")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     career_at = models.CharField(max_length=30)

@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'account', 'rest_framework', 'corsheaders', 'profiles'
+    'rest_framework', 'corsheaders',
+    # application
+    'account',
+    'profiles',
 ]
 
 MIDDLEWARE = [
@@ -134,8 +137,6 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, '../../client/devs', 'build', 'static'),
-    os.path.join(
-        'C:\'taeho\Desktop\coding\hackathon\LikeLion_Hackathon\server\devs\../../client/devs\build\static')
 ]
 
 # Default primary key field type
