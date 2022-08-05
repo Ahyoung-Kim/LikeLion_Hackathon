@@ -12,9 +12,8 @@ const LoginPage = () => {
       <LandingDiv>
 
         <LandingTextComp />
-
+        
         <LoginImg1 src="img/login-2.png" />
-
         <LoginImg2 src="img/login-1.png" />
 
         <LandingContent>

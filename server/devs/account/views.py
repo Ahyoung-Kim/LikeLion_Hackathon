@@ -45,7 +45,6 @@ class UserView(CreateAPIView):
         response = {
             'success': "true",
             'status code': status_code,
-            'message': "user registered successfully",
         }
         return Response(response, status=status_code)
 
@@ -56,28 +55,19 @@ class UserLoginView(GenericAPIView):
 
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        response = {
-            "success": "True",
+        email = serializer.is_valid(raise_exception=True)
+        
+        if email == "false":
+          response = {
+            "success": "false",
             "status_code": status.HTTP_200_OK,
-            "message": "User Logged in successfully",
-        }
-        status_code = status.HTTP_200_OK
+            "email": "",
+          }
+        else:
+          response = {
+              "success": "true",
+              "status_code": status.HTTP_200_OK,
+              "email": email,
+          }
 
-        return Response(response, status=status_code)
 
-
-# def follow(request, pk):
-#     User = get_user_model()
-#     # 팔로우 당하는 사람
-#     user = get_object_or_404(User, pk=pk)
-#     if user != request.user:
-#         # 팔로우를 요청한 사람 => request.user
-#         # 팔로우가 되어 있다면,
-#         if user.followers.filter(pk=request.user.pk).exists():
-#             # 삭제
-#             user.followers.remove(request.user)
-#         else:
-#             # 추가
-#             user.followers.add(request.user)
-#     return redirect('accounts:detail', user.pk)
