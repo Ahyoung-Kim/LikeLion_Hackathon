@@ -1,13 +1,12 @@
-@media screen and (max-width: 985px) {
-    .nav-icon{
-        display: none;
-    }
-}
+
 
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 
+
 .navbar{
     background-color: #FFE082;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .nav-logo{
@@ -17,8 +16,14 @@
     align-items: center;
     cursor: pointer;
 }
+
+.nav-icons{
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
 .nav-icon{
-    margin-left: 30px;
     color: rgb(36, 39, 37);
     cursor: pointer;
 
@@ -26,12 +31,13 @@
 
 .profile-pic{
     width:26px;
-    margin-left: 24px;
     cursor: pointer;
 }
 .nav-searchbar{
-    margin-left: 200px;
-
+    width: 300px;
+    height: 35px;
+    border: none;
+    border-radius: 8px;
 }
 .maintitle{
     font-size: 26px;   

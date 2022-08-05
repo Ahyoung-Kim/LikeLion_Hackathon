@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import './mainpage.css';
 
 
@@ -68,10 +69,14 @@ const MainPage = () => {
                     </div>
                     <div>
                         <div className='updated-card-chips flex-box-r'>
-                            <span className='updated-card-chip'>#웹</span>
-                            <span className='updated-card-chip'>#백엔드</span>
-
+                            <Button className='updated-card-chip' variant='secondary'>
+                            #웹
+                            </Button>
+                            <Button className='updated-card-chip' variant='secondary'>
+                            #백엔드
+                            </Button>
                         </div>
+                        
                     </div>
                     
 
@@ -111,8 +116,12 @@ const MainPage = () => {
                     </div>
                     <div>
                         <div className='updated-card-chips flex-box-r'>
-                            <span className='updated-card-chip'>#웹</span>
-                            <span className='updated-card-chip'>#백엔드</span>
+                            <Button className='updated-card-chip' variant='secondary'>
+                            #웹
+                            </Button>
+                            <Button className='updated-card-chip' variant='secondary'>
+                            #백엔드
+                            </Button>
 
                         </div>
                     </div>
@@ -125,8 +134,8 @@ const MainPage = () => {
         
         <section>
             <div style={{justifyContent:'center', marginBottom: '20px'}}className='flex-box-r'>
-                <div className='recommend'>
-                    <div style={{alignItems:'center'}}className='flex-box-r'>
+                <div className='recommend-section flex-box-c'>
+                    <div className='recommend-header flex-box-r'>
                         <div style={{fontSize:'20px'}}>
                             <span id='user-name'>
                                 아영
@@ -136,8 +145,12 @@ const MainPage = () => {
                             </span>
                         </div>
                         <div className='recommend-card-chips flex-box-r'>
-                            <span className='updated-card-chip'>#웹</span>
-                            <span className='updated-card-chip'>#백엔드</span>
+                            <Button className='updated-card-chip' variant='secondary'>
+                            #웹
+                            </Button>
+                            <Button className='updated-card-chip' variant='secondary'>
+                            #백엔드
+                            </Button>
 
                         </div>
                     </div>
@@ -146,27 +159,27 @@ const MainPage = () => {
                         <div style={{alignItems:'center'}}className='recommend-card flex-box-c'>
                             <img className="recommend-card-img" src={require('./profile-img.png')}></img>
                             <span className='recommend-card-name'>찬수</span>
-                            <span className='recommend-card-idol'>idol 등록</span>
+                            <Button className='recommend-card-idol' variant='secondary'>idol 등록</Button>
                         </div>
                         <div style={{alignItems:'center'}}className='recommend-card flex-box-c'>
                             <img className="recommend-card-img" src={require('./profile-img.png')}></img>
                             <div className='recommend-card-name'>찬수</div>
-                            <div className='recommend-card-idol'>idol 등록</div>
+                            <Button className='recommend-card-idol' variant='secondary'>idol 등록</Button>
                         </div>
                         <div style={{alignItems:'center'}}className='recommend-card flex-box-c'>
                             <img className="recommend-card-img" src={require('./profile-img.png')}></img>
                             <span className='recommend-card-name'>찬수</span>
-                            <span className='recommend-card-idol'>idol 등록</span>
+                            <Button className='recommend-card-idol' variant='secondary'>idol 등록</Button>
                         </div>
                         <div style={{alignItems:'center'}}className='recommend-card flex-box-c'>
                             <img className="recommend-card-img" src={require('./profile-img.png')}></img>
                             <div className='recommend-card-name'>찬수</div>
-                            <div className='recommend-card-idol'>idol 등록</div>
+                            <Button className='recommend-card-idol' variant='secondary'>idol 등록</Button>
                         </div>
                         <div style={{alignItems:'center'}}className='recommend-card flex-box-c'>
                             <img className="recommend-card-img" src={require('./profile-img.png')}></img>
                             <span className='recommend-card-name'>찬수</span>
-                            <span className='recommend-card-idol'>idol 등록</span>
+                            <Button className='recommend-card-idol' variant='secondary'>idol 등록</Button>
                         </div>
                     </div>
                     

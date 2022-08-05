@@ -92,17 +92,28 @@
 
 .updated-card-chip{
     font-size: 14px;
+    color: black;
     background-color: rgba(217, 217, 217, 1);
     border-radius: 20px;
+    border: none;
     padding: 4px 14px;
     margin: 5px;
     cursor: pointer;
 }
 
 
-.recommend{
+.recommend-section{
     width: 75vw;
+    flex-wrap: wrap;
+    align-items: center;
 }
+
+.recommend-header{
+    align-items: center;
+    width: 70vw;
+    margin-bottom: 20px;
+}
+
 
 .recommend-card{
     width: 155px;
@@ -127,8 +138,10 @@
 }
 .recommend-card-idol{
     font-size: 14px;
+    color: black;
     background-color: rgba(178, 153, 176, 1);
+    border: none;
     border-radius: 5px;
-    padding: 8px 14px;
+    padding: 4px 14px;
     margin: 5px;
 }
