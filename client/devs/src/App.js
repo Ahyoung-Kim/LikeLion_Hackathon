@@ -9,15 +9,19 @@ import LoginPage from './components/login/LoginPage';
 import SearchPage from './components/search/SearchPage';
 import ProfilePage3 from './components/profile/profile3/ProfilePage3';
 import MainPage from './components/main/MainPage';
+import ProfilePage from './components/profile/ProfilePage';
+import NavigationBar from './components/NavigationBar';
 
 const App = () => {
   return (
     <div className='font'>
       <Reset />
 
+      <NavigationBar />
+
       <Routes>
         {/* Landing Page */}
-        <Route path="/landing" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage />} />
         
         {/* Login */}
         <Route path="/login" element={<LoginPage />} />
@@ -30,6 +34,9 @@ const App = () => {
 
         {/*Main Page*/}
         <Route path="/mainpage" element={<MainPage/>} />
+
+        {/* Profile Page */}
+        <Route path="/profile" element={<ProfilePage />} />
 
       </Routes>
     </div>

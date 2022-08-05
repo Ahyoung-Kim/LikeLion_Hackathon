@@ -11,7 +11,7 @@ import NavigationBar from '../NavigationBar';
 const MainPage = () => {
   return (
     <>
-        <NavigationBar></NavigationBar>
+        {/* <NavigationBar></NavigationBar> */}
         <section className='updated-friends'>
             <div style={{justifyContent:'center'}}className='flex-box-r'>
             <div style={{width:'70vw'}}>

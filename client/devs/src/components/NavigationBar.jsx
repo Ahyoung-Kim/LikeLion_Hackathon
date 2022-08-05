@@ -1,17 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Container, Form, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMagnifyingGlass, faHouse, faBell, faGear} from "@fortawesome/free-solid-svg-icons";
 import './navigationbar.css';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const NavigationBar = () => {
+  const location = useLocation().pathname
+
+  const navigate = useNavigate();
+  const goProfile = () => {
+    navigate('/profile')
+  }
+  const goMain = () => {
+    navigate('/mainpage')
+  }
+
+  if(location === '/' || location === '/login'){
+    return (
+      <></>
+    )
+  }
+
   return (
     <>
       <Navbar className='navbar' styledbg="light" expand="lg">
       <Container fluid>
-        <div className='nav-logo'>
+        <div className='nav-logo' onClick={goMain}>
           <span className="maintitle" href="#">뎁스</span>
           <span className="subtitle" href="#">devStory</span>
         </div>
@@ -50,7 +67,10 @@ const NavigationBar = () => {
         {/* <FontAwesomeIcon className='nav-icon' icon={faHouse} />
         <FontAwesomeIcon className='nav-icon' icon={faBell} />
         <FontAwesomeIcon className='nav-icon' icon={faGear} /> */}
-        <img className="profile-pic" style={{width:'26px', marginLeft:'24px'}}src={require('./search/profile-img.png')}></img>
+        <img className="profile-pic" 
+        style={{width:'26px', marginLeft:'24px'}}
+        src={require('./search/profile-img.png')}
+        onClick={goProfile} />
 
       </Container>
     </Navbar>

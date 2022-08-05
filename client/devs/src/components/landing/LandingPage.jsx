@@ -13,6 +13,7 @@ const LandingPage = () => {
 
         <LandingTextComp />
 
+        
         <LandingContent>
 
           <LandingInfo />
@@ -20,6 +21,7 @@ const LandingPage = () => {
           <Register />
 
         </LandingContent>
+        
 
         <LandingFooter />
 

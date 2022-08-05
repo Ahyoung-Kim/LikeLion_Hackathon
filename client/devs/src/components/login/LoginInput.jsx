@@ -5,6 +5,8 @@ import {
   RegisterInput, RegisterInputText,
   RegisterBtn
 } from '../../styledComponents';
+import axios from 'axios'
+import { APIURL } from '../../config/key';
 
 const LoginInput = () => {
   const [input, setInput] = useState({
@@ -39,8 +41,26 @@ const LoginInput = () => {
     }
   }
 
-  const onLogin = () => {
+  const sendRequest = async() => {
+    const res = await axios.post(`${APIURL}/account/login/`, {
+      email: email,
+      password: pwd
+    })
 
+    console.log(res);
+    if(res.data.status_code == 200){
+      console.log('login success')
+    } else {
+      console.log('login fail')
+    }
+  }
+
+  const onLogin = () => {
+    if(!email || !pwd){
+      alert('모든 정보를 입력해주세요!');
+    } else {
+      sendRequest();
+    }
   }
 
   return (
@@ -66,7 +86,7 @@ const LoginInput = () => {
           <RegisterLi>
             <RegisterInputText>비밀번호</RegisterInputText>
             <RegisterInput 
-              type="text"
+              type="password"
               name="pwd"
               value={pwd}
               ref={pwdRef}

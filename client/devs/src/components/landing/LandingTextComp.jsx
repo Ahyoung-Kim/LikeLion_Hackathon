@@ -1,11 +1,20 @@
 import React from 'react';
-import { DevsText } from '../../styledComponents';
+import { useNavigate } from 'react-router-dom';
+import { DevsText, LandingHead } from '../../styledComponents';
 
 const LandingTextComp = () => {
+  const navigate = useNavigate();
+  const goMain = () => {
+    navigate('/mainpage')
+  }
   return (
+  <LandingHead>
     <DevsText>
-      뎁스 devStory
+      <div onClick={goMain}>
+        뎁스 devStory
+      </div>
     </DevsText>
+  </LandingHead>
   );
 };
 
