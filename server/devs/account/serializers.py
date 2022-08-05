@@ -24,8 +24,7 @@ class UserLoginSerializer(serializers.Serializer):
         user = authenticate(email=email, password=password)
 
         # TODO
-        # 로그인 실패 시 프론트로 보냄
         if user is None:
-            raise serializers.ValidationError("not user in site")
+            return "false"
 
-        return {'email': user.email}
+        return user.email

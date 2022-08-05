@@ -40,7 +40,6 @@ class UserView(CreateAPIView):
         response = {
             'success': "true",
             'status code': status_code,
-            'message': "user registered successfully",
         }
         return Response(response, status=status_code)
 
@@ -50,12 +49,19 @@ class UserLoginView(GenericAPIView):
 
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        response = {
-            "success": "True",
+        email = serializer.is_valid(raise_exception=True)
+        
+        if email == "false":
+          response = {
+            "success": "false",
             "status_code": status.HTTP_200_OK,
-            "message": "User Logged in successfully",
-        }
-        status_code = status.HTTP_200_OK
+            "email": "",
+          }
+        else:
+          response = {
+              "success": "true",
+              "status_code": status.HTTP_200_OK,
+              "email": email,
+          }
 
-        return Response(response, status=status_code)
+        return Response(response, status=status.HTTP_200_OK)
