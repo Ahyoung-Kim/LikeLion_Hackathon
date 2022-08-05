@@ -28,15 +28,10 @@ const SearchPage = () => {
                 <span id='user-name'>아영</span>
                 <span style={{color:'#707070'}}>님께 추천드려요</span>
             </div>
-            <div className='recommend-item'>
-                <span className='recommend-what'>#node.js</span>
-            </div>
-            <div className='recommend-item'>
-                <span className='recommend-what'>#python</span>
-            </div>
-            <div className='recommend-item'>
-                <span className='recommend-what'>#공부</span>
-            </div>
+            
+            <Button className='recommend-chip' variant='secondary'>#node js</Button>
+            <Button className='recommend-chip' variant='secondary'>#javascript</Button>
+            <Button className='recommend-chip' variant='secondary'>#python</Button>
         </div>
 
 

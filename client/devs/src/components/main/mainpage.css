@@ -34,7 +34,7 @@
 
 
 .updated-friends-profile{
-    
+    cursor: pointer;
 }
 
 
@@ -60,6 +60,7 @@
     background-color: rgba(255, 224, 130, 0.6);
     border-radius: 10px;
     width: 80vw;
+    cursor: pointer;
 }
 
 .updated-card-img{
@@ -95,6 +96,7 @@
     border-radius: 20px;
     padding: 4px 14px;
     margin: 5px;
+    cursor: pointer;
 }
 
 
@@ -107,6 +109,7 @@
     height: 173px;
     background-color: rgba(255, 153, 0, 0.6);
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .recommend-card-img{

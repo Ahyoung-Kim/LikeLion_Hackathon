@@ -15,6 +15,8 @@
 
 .skill-header{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -36,6 +38,11 @@
 
 .skill-specific > p{
     margin-left: 60px;
+}
+
+.skill-edit{
+    display: block;
+    background-color: rgb(132, 22, 12);
 }
 
 .check-icon{

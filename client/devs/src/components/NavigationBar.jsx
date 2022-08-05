@@ -64,9 +64,7 @@ const NavigationBar = () => {
         <span class="nav-icon material-symbols-outlined">
         settings
         </span>
-        {/* <FontAwesomeIcon className='nav-icon' icon={faHouse} />
-        <FontAwesomeIcon className='nav-icon' icon={faBell} />
-        <FontAwesomeIcon className='nav-icon' icon={faGear} /> */}
+
         <img className="profile-pic" 
         style={{width:'26px', marginLeft:'24px'}}
         src={require('./search/profile-img.png')}

@@ -5,19 +5,18 @@ import './profilepage3.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPen, faClipboardCheck} from "@fortawesome/free-solid-svg-icons";
 
-import NavigationBar from '../../NavigationBar';
 
 const ProfilePage3 = () => {
   return (
     <>
-        <NavigationBar></NavigationBar>
+
 
         <div style={{display: 'flex', justifyContent: 'center'}}>
         <section className='profile3-content'>
             <div className='skill'>
                 <div className='skill-header'>
                     <p className='skill-name'>Programming Languages - Javascript</p>
-                    <Button style={{justifySelf:'end', backgroundColor:'rgb(132, 22, 12)'}}>
+                    <Button className='skill-edit'>
                         <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>
                     </Button>
                 </div>

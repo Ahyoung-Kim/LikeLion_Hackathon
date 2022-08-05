@@ -10,7 +10,7 @@
 .recommend-bar{
     margin-top: 2%;
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     height: 100px;
@@ -21,12 +21,14 @@
     margin-right: 6px;
     font-size: 36px;
 }
-.recommend-item{
-    border: 1px solid rgb(0, 0, 0);
+
+.recommend-chip{
+    color: black;
+    font-size: 20px;
+    background-color: white;
+    border: 1px solid black;
     border-radius: 20px;
-    padding: 4px 10px;
-    font-size: 32px;
-    margin: 0 6px;
+    margin: 0px 6px;
 }
 .recommend-what{
     font-weight: bold;
@@ -57,6 +59,7 @@
     height: 450px;
     justify-content: space-evenly;
     margin: 0 10px 30px 0;
+    cursor: pointer;
 }
 .float-container{
     display: flex;
@@ -142,7 +145,7 @@
     height: 450px;
     background-color: #e5dde7;
     margin: 0 10px 30px 0;
-
+    cursor: pointer;
 }
 
 .ad-name{
@@ -173,3 +176,4 @@
     left: 330px;
     bottom: -20px;
 }
+

@@ -1,17 +1,11 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Form, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import './mainpage.css';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faMagnifyingGlass, faHouse, faBell, faGear} from "@fortawesome/free-solid-svg-icons";
 
-import NavigationBar from '../NavigationBar';
 
 
 const MainPage = () => {
   return (
     <>
-        {/* <NavigationBar></NavigationBar> */}
         <section className='updated-friends'>
             <div style={{justifyContent:'center'}}className='flex-box-r'>
             <div style={{width:'70vw'}}>
