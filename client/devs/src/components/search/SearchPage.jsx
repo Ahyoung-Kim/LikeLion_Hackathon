@@ -5,13 +5,12 @@ import './search.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMagnifyingGlass, faHouse, faBell, faGear} from "@fortawesome/free-solid-svg-icons";
 
-import NavigationBar from '../NavigationBar';
 import ProfileCard from './ProfileCard';
 import AdCard from './AdCard';
 const SearchPage = () => {
   return (
     <>
-        <NavigationBar></NavigationBar>
+
         <div className='search-div'>
             <Form className="main-search-bar">
             <Form.Control
