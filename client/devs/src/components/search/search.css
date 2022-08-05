@@ -1,0 +1,175 @@
+.flex-box-r{
+    display:flex;
+}
+.flex-box-c{
+    display:flex;
+    flex-direction: column;
+}
+
+
+.recommend-bar{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.recommend-who{
+    padding: 5px;
+    margin-right: 6px;
+    font-size: 36px;
+}
+.recommend-item{
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 32px;
+    margin: 0 6px;
+}
+.recommend-what{
+    font-weight: bold;
+    position: relative;
+    top: 15%;
+    transform: translateY((-50%));
+    padding: 5px;
+}
+
+#user-name{
+    font-weight: bold;
+}
+
+.suggest{
+    margin-top: 6%;
+    font-size: 36px;
+    color:  #707070;
+    align-self: flex-start;
+}
+
+
+.profile-card{
+    display: flex;
+    flex-direction: column;
+    background-color: #c2e6ab;
+    border-radius: 30px;
+    width: 400px;
+    height: 450px;
+    justify-content: space-evenly;
+    margin: 0 10px 30px 0;
+}
+.float-container{
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.float-container > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.profile-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.profile-content > div > p{
+    margin-left: 10px;
+}
+
+.profile-pic{
+    aspect-ratio: 1 / 1;
+    width: 95px;
+    border-radius: 50%;
+    margin-right: 30px;
+}
+
+.profile-name{
+    font-weight: 700;
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+.profile-job{
+    font-size: 36px;
+}
+
+.profile-intro{
+    margin-top: 10px;
+    text-align: left;
+
+
+}
+
+.profile-spec{
+    margin-top: 20px;
+    text-align: left;
+    
+}
+
+.profile-skills{
+    margin-top: 20px;
+    text-align: left;
+}
+
+.profile-skills > p{
+    font-weight: bold;
+}
+
+.cards-section{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 6vw;
+    /* width: calc(380px + 40px) * 3; */
+    width: 90vw;
+    flex-wrap: wrap;
+    
+}
+
+.ad-card{
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    width: 400px;
+    height: 450px;
+    background-color: #e5dde7;
+    margin: 0 10px 30px 0;
+
+}
+
+.ad-name{
+    font-weight: 700;
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+.ad-type{
+    font-size: 36px;
+
+
+}
+
+
+.ad-content > p{
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 24px;
+}
+
+.ad-text{
+    width: max-content;
+    color: #f8f4f4;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    left: 330px;
+    bottom: -20px;
+}
