@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'account', 'rest_framework', 'corsheaders'
+    'rest_framework', 'corsheaders',
+    # application
+    'account',
+    'profiles',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +58,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    'http://127.0.0.1:3000', 
+    'http://127.0.0.1:3000',
     'http://localhost:8000'
 ]
 CORS_ALLOW_CREDENTIALS = True
@@ -65,7 +68,7 @@ ROOT_URLCONF = 'devs.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        #'DIRS': [],
+        # 'DIRS': [],
         'DIRS': [
             os.path.join(BASE_DIR, '../../client/devs', 'build')
         ],
@@ -117,9 +120,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-#LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'ko-kr'
-#TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
 TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
@@ -133,7 +136,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '../../client/devs', 'build', 'static')
+    os.path.join(BASE_DIR, '../../client/devs', 'build', 'static'),
 ]
 
 # Default primary key field type
