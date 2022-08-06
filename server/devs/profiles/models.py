@@ -41,26 +41,6 @@ class UserSkills(models.Model):  # 기술스택
     skill_name = models.CharField(max_length=100, null=True)
 
 
-# class UserSkillsLan(models.Model):  # 기술스택 - Programming Language
-#     id = models.BigAutoField(primary_key=True)
-#     post = models.ForeignKey(
-#         "UserSkills",
-#         related_name="post_anguage",
-#         on_delete=models.CASCADE,
-#         db_column="post_anguage")
-#     language = models.CharField(max_length=30)
-
-
-# class UserSkillsFram(models.Model):  # 기술스택 - Framework / Library
-#     id = models.BigAutoField(primary_key=True)
-#     post = models.ForeignKey(
-#         "UserSkills",
-#         related_name="post_framework",
-#         on_delete=models.CASCADE,
-#         db_column="post_framework")
-#     framework = models.CharField(max_length=30)
-
-
 class UserStudy(models.Model):  # 개인공부
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
@@ -69,26 +49,6 @@ class UserStudy(models.Model):  # 개인공부
     updated_at = models.DateTimeField(auto_now=True)
     study_type = models.CharField(max_length=100, null=True)
     study_name = models.CharField(max_length=100, null=True)
-
-
-# class UserStudyCS(models.Model):  # 개인공부 - CS
-#     id = models.BigAutoField(primary_key=True)
-#     post = models.ForeignKey(
-#         "UserStudy",
-#         related_name="CS",
-#         on_delete=models.CASCADE,
-#         db_column="post_cs")
-#     CS = models.CharField(max_length=30)
-
-
-# class UserStudyPS(models.Model):  # 개인공부 - PS
-#     id = models.BigAutoField(primary_key=True)
-#     post = models.ForeignKey(
-#         "UserStudy",
-#         related_name="PS",
-#         on_delete=models.CASCADE,
-#         db_column="post_ps")
-#     PS = models.CharField(max_length=30)
 
 
 class UserCert(models.Model):  # 자격증
