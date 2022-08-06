@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   ProfileDiv, ProfileInfoDiv, ProfileImgDiv,
   ProfileImg, ProfileImgEditBtn, ProfileFunctDiv,
@@ -23,9 +23,17 @@ import ProfileImage from './ProfileImage';
 import ProfileText from './ProfileText';
 import ProfileTag from './ProfileTag';
 import ProfileFollow from './ProfileFollow';
+import ProfileEdit from './ProfileEdit';
+
 
 const ProfilePage = () => {
+
+  
+
+
+
   return (
+
     <>
       <ProfileDiv>
 
@@ -49,33 +57,33 @@ const ProfilePage = () => {
         <DescDiv>
 
           <DescHead text="소개" />
-
-          <DescContentsDiv>
+          {/* 각 input 마다 id를 정했습니다 */}
+          <DescContentsDiv id='intro'>
             <DescSmallDiv>
               <SmallDiv>
                 <SmallLabel>학교/직장</SmallLabel>
-                <SmallBox>서강대학교</SmallBox>
+                <SmallBox id='intro-belongs'>서강대학교</SmallBox>
               </SmallDiv>
               <SmallDiv>
                 <SmallLabel>전공</SmallLabel>
-                <SmallBox>컴퓨터공학</SmallBox>
+                <SmallBox id='intro-major'>컴퓨터공학</SmallBox>
               </SmallDiv>
             </DescSmallDiv>
 
             <DescSmallDiv>
               <SmallDiv>
                 <SmallLabel>메인포지션</SmallLabel>
-                <SmallBox>웹 프론트엔드</SmallBox>
+                <SmallBox id='intro-position'>웹 프론트엔드</SmallBox>
               </SmallDiv>
               <SmallDiv>
                 <SmallLabel>서브포지션</SmallLabel>
-                <SmallBox>웹 백엔드</SmallBox>
+                <SmallBox id='intro-subposition'>웹 백엔드</SmallBox>
               </SmallDiv>
             </DescSmallDiv>
 
             <BigDiv>
               <SmallLabel>자기소개</SmallLabel>
-              <BigBox>난 킹아영</BigBox>
+              <BigBox id='intro-introduction'>난 킹아영</BigBox>
             </BigDiv>
           </DescContentsDiv>
 
