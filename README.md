@@ -40,6 +40,16 @@ $ cd devs
 $ python manage.py runserver
 ```
 
+### 장고 실행 전 데이터베이스 업데이트
+
+```bash
+$ cd server
+$ source myvenv/Scripts/activate
+$ cd devs
+$ python manage.py makemigrations
+$ python manage.py migrate
+```
+
 ### 리액트 + 장고 실행
 
 ```bash
