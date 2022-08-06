@@ -19,14 +19,21 @@ class UserSkillsSerializer(serializers.ModelSerializer):
         model = UserSkills
         fields = '__all__'
 
-
+class UserSkillsDetailsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserSkillsDetails
+        fields = '__all__'
 
 class UserStudySerializer(serializers.ModelSerializer):
     class Meta:
         model = UserStudy
         fields = '__all__'
 
-
+class UserStudyDetailsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserStudyDetails
+        fields = '__all__'
+        
 class UserCertSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserCert
