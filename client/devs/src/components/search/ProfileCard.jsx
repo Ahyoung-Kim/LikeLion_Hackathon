@@ -7,7 +7,6 @@ import './search.css';
 const ProfileCard = () => {
   return (
     <section className='profile-card'>   
-
         <div className='float-container'>
             <img className="profile-pic" src={require('./profile-img.png')}></img>
             <div>

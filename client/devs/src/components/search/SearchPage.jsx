@@ -52,6 +52,8 @@ const SearchPage = () => {
                 </div>
             </div>
         </section>
+
+
     </>
   );
 };
