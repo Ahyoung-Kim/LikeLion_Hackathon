@@ -28,9 +28,19 @@ class UserSkillsViewSet(viewsets.ModelViewSet):
     serializer_class = UserSkillsSerializer
 
 
+class UserSkillsDetailsViewSet(viewsets.ModelViewSet):
+    queryset = UserSkillsDetails.objects.all()
+    serializer_class = UserSkillsDetailsSerializer
+
+
 class UserStudyViewSet(viewsets.ModelViewSet):
     queryset = UserStudy.objects.all()
     serializer_class = UserStudySerializer
+
+
+class UserStudyDetailsViewSet(viewsets.ModelViewSet):
+    queryset = UserStudyDetails.objects.all()
+    serializer_class = UserStudyDetailsSerializer
 
 
 class UserCertViewSet(viewsets.ModelViewSet):
