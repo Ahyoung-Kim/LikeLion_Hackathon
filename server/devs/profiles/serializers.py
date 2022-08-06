@@ -20,34 +20,11 @@ class UserSkillsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-# class UserSkillsLanSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = UserSkillsLan
-#         fields = '__all__'
-
-
-# class UserSkillsFramSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = UserSkillsFram
-#         fields = '__all__'
-
 
 class UserStudySerializer(serializers.ModelSerializer):
     class Meta:
         model = UserStudy
         fields = '__all__'
-
-
-# class UserStudyCSSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = UserStudyCS
-#         fields = '__all__'
-
-
-# class UserStudyPSSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = UserStudyPS
-#         fields = '__all__'
 
 
 class UserCertSerializer(serializers.ModelSerializer):
