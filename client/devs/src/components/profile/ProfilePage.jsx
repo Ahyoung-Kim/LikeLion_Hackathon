@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import { APIURL } from '../../config/key';
 import { 
   ProfileDiv, ProfileInfoDiv, ProfileImgDiv,
   ProfileImg, ProfileImgEditBtn, ProfileFunctDiv,
@@ -25,6 +27,16 @@ import ProfileTag from './ProfileTag';
 import ProfileFollow from './ProfileFollow';
 
 const ProfilePage = () => {
+
+  //////////////////////백엔드에서 정보 가져오기
+  const fetch = async() => {
+    const res = await axios.post(`${APIURL}/profile/details/`, {
+      
+    })
+  }
+  /////////////////////
+
+
   return (
     <>
       <ProfileDiv>
@@ -50,32 +62,32 @@ const ProfilePage = () => {
 
           <DescHead text="소개" />
 
-          <DescContentsDiv>
+          <DescContentsDiv id = "intro">
             <DescSmallDiv>
               <SmallDiv>
                 <SmallLabel>학교/직장</SmallLabel>
-                <SmallBox>서강대학교</SmallBox>
+                <SmallBox id="belongs">서강대학교</SmallBox>
               </SmallDiv>
               <SmallDiv>
                 <SmallLabel>전공</SmallLabel>
-                <SmallBox>컴퓨터공학</SmallBox>
+                <SmallBox id="major">컴퓨터공학</SmallBox>
               </SmallDiv>
             </DescSmallDiv>
 
             <DescSmallDiv>
               <SmallDiv>
                 <SmallLabel>메인포지션</SmallLabel>
-                <SmallBox>웹 프론트엔드</SmallBox>
+                <SmallBox id="position">웹 프론트엔드</SmallBox>
               </SmallDiv>
               <SmallDiv>
                 <SmallLabel>서브포지션</SmallLabel>
-                <SmallBox>웹 백엔드</SmallBox>
+                <SmallBox id="subposition">웹 백엔드</SmallBox>
               </SmallDiv>
             </DescSmallDiv>
 
             <BigDiv>
               <SmallLabel>자기소개</SmallLabel>
-              <BigBox>난 킹아영</BigBox>
+              <BigBox id="introduction">난 킹아영</BigBox>
             </BigDiv>
           </DescContentsDiv>
 

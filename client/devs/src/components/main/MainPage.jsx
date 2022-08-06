@@ -20,16 +20,16 @@ const MainPage = () => {
                     {/* 최대 8개 까지 보이도록 js 짜기 */}
                     <div style={{gap:'10px', alignItems:'center' ,justifyContent:'center'}}className='flex-box-r'>
                         <div className='updated-friends-profile'>
-                            <img style={{color:'red'}}className="updated-friends-img" src={require('./profile-img.png')}></img>
+                            <img style={{color:'red'}}className="updated-friends-img" src={require('../../static/profile-img.png')}></img>
                             <span className='updated-friends-dot'></span>
                         </div>
                         <div className='updated-friends-profile'>
-                            <img className="updated-friends-img" src={require('./profile-img.png')}></img>
+                            <img className="updated-friends-img" src={require('../../static/profile-img.png')}></img>
                             <span className='updated-friends-dot'></span>
 
                         </div>
                         <div className='updated-friends-profile'>
-                            <img className="updated-friends-img" src={require('./profile-img.png')}></img>
+                            <img className="updated-friends-img" src={require('../../static/profile-img.png')}></img>
                             <span className='updated-friends-dot'></span>
                            
                         </div>
@@ -43,7 +43,7 @@ const MainPage = () => {
             <div style={{justifyContent:'center', marginBottom: '20px'}}className='flex-box-r'>
                 <div className='updated-card'>
                     <div style={{alignItems:'center'}}className='flex-box-r'>
-                        <img className="updated-card-img" src={require('./profile-img.png')}></img>
+                        <img className="updated-card-img" src={require('../../static/profile-img.png')}></img>
                         <span className='updated-card-name'>
                             세은
                         </span>
@@ -90,7 +90,7 @@ const MainPage = () => {
             <div style={{justifyContent:'center', marginBottom: '20px'}}className='flex-box-r'>
                 <div className='updated-card'>
                     <div style={{alignItems:'center'}}className='flex-box-r'>
-                        <img className="updated-card-img" src={require('./profile-img.png')}></img>
+                        <img className="updated-card-img" src={require('../../static/profile-img.png')}></img>
                         <span className='updated-card-name'>
                             세은
                         </span>
@@ -157,27 +157,27 @@ const MainPage = () => {
                     
                     <div style={{justifyContent:'center', gap:'20px', flexWrap:'wrap'}} className='flex-box-r'>
                         <div style={{alignItems:'center'}}className='recommend-card flex-box-c'>
-                            <img className="recommend-card-img" src={require('./profile-img.png')}></img>
+                            <img className="recommend-card-img" src={require('../../static/profile-img.png')}></img>
                             <span className='recommend-card-name'>찬수</span>
                             <Button className='recommend-card-idol' variant='secondary'>idol 등록</Button>
                         </div>
                         <div style={{alignItems:'center'}}className='recommend-card flex-box-c'>
-                            <img className="recommend-card-img" src={require('./profile-img.png')}></img>
+                            <img className="recommend-card-img" src={require('../../static/profile-img.png')}></img>
                             <div className='recommend-card-name'>찬수</div>
                             <Button className='recommend-card-idol' variant='secondary'>idol 등록</Button>
                         </div>
                         <div style={{alignItems:'center'}}className='recommend-card flex-box-c'>
-                            <img className="recommend-card-img" src={require('./profile-img.png')}></img>
+                            <img className="recommend-card-img" src={require('../../static/profile-img.png')}></img>
                             <span className='recommend-card-name'>찬수</span>
                             <Button className='recommend-card-idol' variant='secondary'>idol 등록</Button>
                         </div>
                         <div style={{alignItems:'center'}}className='recommend-card flex-box-c'>
-                            <img className="recommend-card-img" src={require('./profile-img.png')}></img>
+                            <img className="recommend-card-img" src={require('../../static/profile-img.png')}></img>
                             <div className='recommend-card-name'>찬수</div>
                             <Button className='recommend-card-idol' variant='secondary'>idol 등록</Button>
                         </div>
                         <div style={{alignItems:'center'}}className='recommend-card flex-box-c'>
-                            <img className="recommend-card-img" src={require('./profile-img.png')}></img>
+                            <img className="recommend-card-img" src={require('../../static/profile-img.png')}></img>
                             <span className='recommend-card-name'>찬수</span>
                             <Button className='recommend-card-idol' variant='secondary'>idol 등록</Button>
                         </div>
