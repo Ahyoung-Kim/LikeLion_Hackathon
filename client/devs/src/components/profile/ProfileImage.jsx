@@ -11,7 +11,7 @@ const ProfileImage = () => {
   return (
     <>
       <ProfileImgDiv>
-        <ProfileImg src="../img/likelion.jpg" />
+        <ProfileImg src={require('../../static/likelion.jpg')} />
         <ProfileImgEditBtn>
           <FontAwesomeIcon icon={faPen} />
         </ProfileImgEditBtn>

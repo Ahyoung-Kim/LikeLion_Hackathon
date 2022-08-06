@@ -13,8 +13,8 @@ const LoginPage = () => {
 
         <LandingTextComp />
         
-        <LoginImg1 src="img/login-2.png" />
-        <LoginImg2 src="img/login-1.png" />
+        <LoginImg1 src={require('../../static/login-1.png')} />
+        <LoginImg2 src={require('../../static/login-2.png')}/>
 
         <LandingContent>
           <LoginInput />
