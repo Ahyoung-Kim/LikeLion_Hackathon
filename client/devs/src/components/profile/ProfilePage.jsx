@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, useState, useEffect  } from 'react';
 import axios from 'axios';
 import { APIURL } from '../../config/key';
 import { 
@@ -29,11 +29,25 @@ import ProfileFollow from './ProfileFollow';
 const ProfilePage = () => {
 
   //////////////////////백엔드에서 정보 가져오기
-  const fetch = async() => {
-    const res = await axios.post(`${APIURL}/profile/details/`, {
-      
+  
+    const [dataDetails, setdataDetails] = useState([])
+    useEffect(() => {
+      axios.get(`${APIURL}/profile/details/`)
+
+      //아래 예시들은 잘 받아와집니다
+      //axios.get('https://jsonplaceholder.typicode.com/users')
+      //axios.get('https://v2.jokeapi.dev/joke/Any')
+        .then(res => {
+          console.log(res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
     })
-  }
+  
+
+
+
   /////////////////////
 
 

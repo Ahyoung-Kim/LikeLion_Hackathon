@@ -1,14 +1,13 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Form, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 import './search.css';
 
 const ProfileCard = () => {
   return (
     <section className='profile-card'>   
-        <div className='float-container'>
-            <img className="profile-pic" src={require('../../static/profile-img.png')}></img>
+        <div className='id-container'>
+            <img style={{width:'95px', borderRadius:'50%'}} src={require('../../static/profile-img.png')}></img>
             <div>
                 <p className='profile-name'>최세은</p>
                 <p className='profile-job'>웹 백엔드</p>

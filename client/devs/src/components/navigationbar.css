@@ -31,6 +31,7 @@
 
 .profile-pic{
     width:26px;
+    border-radius: 50%;
     cursor: pointer;
 }
 .nav-searchbar{

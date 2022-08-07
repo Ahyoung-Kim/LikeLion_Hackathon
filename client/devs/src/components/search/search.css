@@ -61,13 +61,14 @@
     margin: 0 10px 30px 0;
     cursor: pointer;
 }
-.float-container{
+.id-container{
+    margin: 0 auto;
+    width: 350px;
     display: flex;
-    margin-top: 10px;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
-.float-container > div{
+.id-container > div{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -86,11 +87,6 @@
     margin-left: 10px;
 }
 
-.profile-pic{
-    width: 95px;
-    border-radius: 50%;
-    margin-right: 30px;
-}
 
 .profile-name{
     font-weight: 700;

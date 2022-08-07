@@ -8,8 +8,8 @@ const AdCard = () => {
   return (
     <section style={{display:'flex', flexDirection:'column', justifyContent:'space-evenly'}}className='ad-card'>   
 
-        <div className='float-container'>
-            <img className="profile-pic" src={require('./profile-img.png')}></img>
+        <div className='id-container'>
+            <img style={{width:'95px', borderRadius:'50%'}} src={require('../../static/profile-img.png')}></img>
             <div>
                 <p className='ad-name'>코드라이언</p>
                 <p className='ad-type'>인터넷 강의</p>
