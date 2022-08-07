@@ -62,7 +62,7 @@ const ProfilePage = () => {
 
           <DescHead text="소개" />
 
-          <DescContentsDiv id = "intro">
+          <DescContentsDiv id = "details">
             <DescSmallDiv>
               <SmallDiv>
                 <SmallLabel>학교/직장</SmallLabel>
@@ -97,7 +97,7 @@ const ProfilePage = () => {
 
           <DescHead text="현재 진행 중" />
 
-          <DescContentsDiv>
+          <DescContentsDiv id = 'ongoing'>
             <CurrentStudy>
               현재 자바스크립트 공부 중이에요~!
             </CurrentStudy>
@@ -108,14 +108,14 @@ const ProfilePage = () => {
 
           <DescHead text="기술스택/Skill Set" />
 
-          <DescContentsDiv>
+          <DescContentsDiv id = 'skills'>
 
             <SkillSetDiv>
               <SkillHeadDiv>
                 Programing Languages
               </SkillHeadDiv>
 
-              <SkillContents>
+              <SkillContents id='skills-details'>
                 <SkillDiv>JavaScript</SkillDiv>
                 <SkillDiv>HTML</SkillDiv>
                 <SkillDiv>CSS</SkillDiv>
@@ -127,7 +127,7 @@ const ProfilePage = () => {
                 Framework / Library
               </SkillHeadDiv>
 
-              <SkillContents>
+              <SkillContents id='study'>
                 <SkillDiv>React</SkillDiv>
                 <SkillDiv>Django</SkillDiv>
                 <SkillDiv>Express</SkillDiv>
