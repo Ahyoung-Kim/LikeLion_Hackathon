@@ -5,6 +5,17 @@
 | Server | http://127.0.0.1:8000 |
 | Client | http://localhost:3000 |
 
+## Client PATH
+
+| path                                   | 설명                                                                                               |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| /                                      | landing page 및 회원가입 페이지                                                                    |
+| /login                                 | 로그인 페이지                                                                                      |
+| /main                                  | 메인 피드 페이지                                                                                   |
+| /profile/:user_id                      | 유저 프로필 페이지(parameter: user_id == User 인스턴스 아이디값)                                   |
+| /profile/:user_id/post/:category/:name | 유저 프로필 페이지의 게시글 목록 페이지 (ex) /profile/12314adf12/programming-languages/javascript) |
+| /search                                | 검색 페이지                                                                                        |
+
 ### 리액트 패키지 설치
 
 ```bash

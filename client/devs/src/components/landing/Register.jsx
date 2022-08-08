@@ -125,7 +125,7 @@ const Register = () => {
 
     console.log(res);
 
-    if(res.data.status_code == 200){
+    if(res.data.success === 'true'){
       alert('회원가입 성공! 환영합니다.')
       navigate('/login');
     } else {
@@ -137,7 +137,6 @@ const Register = () => {
     if(!email || !pwd || !nickname || !uname){
       alert('모든 정보를 입력해주세요!')
     } else {
-      console.log('click')
       sendRequest();
     }
   }

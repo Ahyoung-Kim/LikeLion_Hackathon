@@ -5,7 +5,7 @@ import { DevsText, LandingHead } from '../../styledComponents';
 const LandingTextComp = () => {
   const navigate = useNavigate();
   const goMain = () => {
-    navigate('/mainpage')
+    navigate('/main')
   }
   return (
   <LandingHead>

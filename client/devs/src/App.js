@@ -20,7 +20,7 @@ const App = () => {
       <NavigationBar />
 
       <Routes>
-        {/* Landing Page */}
+        {/* Landing Page & Register */}
         <Route path="/" element={<LandingPage />} />
         
         {/* Login */}
@@ -30,13 +30,15 @@ const App = () => {
         <Route path="/search" element={<SearchPage />} />
 
         {/*Profile Page 3*/}
-        <Route path="/profile3" element={<ProfilePage3 />} />
+        {/* <Route path="/profile3" element={<ProfilePage3 />} /> */}
 
         {/*Main Page*/}
-        <Route path="/mainpage" element={<MainPage/>} />
+        <Route path="/main" element={<MainPage/>} />
 
         {/* Profile Page */}
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile/:user_id" element={<ProfilePage />}>
+          <Route path="post/:category/:name" element={<ProfilePage3 />} />
+        </Route>
 
       </Routes>
     </div>

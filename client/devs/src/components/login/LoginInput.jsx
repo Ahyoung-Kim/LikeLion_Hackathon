@@ -7,6 +7,8 @@ import {
 } from '../../styledComponents';
 import axios from 'axios'
 import { APIURL } from '../../config/key';
+import { setCookie } from '../../config/cookie';
+import { useNavigate } from 'react-router-dom';
 
 const LoginInput = () => {
   const [input, setInput] = useState({
@@ -41,6 +43,7 @@ const LoginInput = () => {
     }
   }
 
+  const navigate = useNavigate();
   const sendRequest = async() => {
     const res = await axios.post(`${APIURL}/account/login/`, {
       email: email,
@@ -48,8 +51,10 @@ const LoginInput = () => {
     })
 
     console.log(res);
-    if(res.data.status_code == 200){
+    if(res.data.success === 'true'){
       console.log('login success')
+      setCookie('user_id', email, {maxAge: 3000, path: '/'})
+      navigate('/main')
     } else {
       console.log('login fail')
     }
