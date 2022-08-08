@@ -137,6 +137,7 @@ const Register = () => {
     if(!email || !pwd || !nickname || !uname){
       alert('모든 정보를 입력해주세요!')
     } else {
+      console.log('click')
       sendRequest();
     }
   }
