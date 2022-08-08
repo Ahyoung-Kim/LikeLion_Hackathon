@@ -10,6 +10,7 @@ from django.http import Http404
 from .serializers import UserSerializer, UserLoginSerializer
 from .models import User
 
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 
@@ -52,19 +53,19 @@ class UserLoginView(GenericAPIView):
 
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
-        email = serializer.is_valid(raise_exception=True)
+        id = serializer.is_valid(raise_exception=True)
 
-        if email == "false":
+        if id == "false":
             response = {
                 "success": "false",
                 "status_code": status.HTTP_200_OK,
-                "email": "",
+                "id": "",
             }
         else:
             response = {
                 "success": "true",
                 "status_code": status.HTTP_200_OK,
-                "email": email,
+                "id": id,
             }
 
         return Response(response, status=status.HTTP_200_OK)
