@@ -27,135 +27,236 @@ import ProfileTag from './ProfileTag';
 import ProfileFollow from './ProfileFollow';
 
 const ProfilePage = () => {
-
   //////////////////////백엔드에서 정보 가져오기
+
+  //1.
+  const [dataDetails, setdataDetails] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${APIURL}/profiles/details/`)
+      .then((res) => {
+        console.log("getting from ::::", res.data);
+        setdataDetails(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const drawDetails = dataDetails.map((dataDetails, index) => {
+    return (
+      <>
+        <DescContentsDiv id="details">
+          <DescSmallDiv>
+            <SmallDiv>
+              <SmallLabel>학교/직장</SmallLabel>
+              <SmallBox id="belongs">{dataDetails.belongs}</SmallBox>
+            </SmallDiv>
+            <SmallDiv>
+              <SmallLabel>전공</SmallLabel>
+              <SmallBox id="major">{dataDetails.major}</SmallBox>
+            </SmallDiv>
+          </DescSmallDiv>
+
+          <DescSmallDiv>
+            <SmallDiv>
+              <SmallLabel>메인포지션</SmallLabel>
+              <SmallBox id="position">{dataDetails.position}</SmallBox>
+            </SmallDiv>
+            <SmallDiv>
+              <SmallLabel>서브포지션</SmallLabel>
+              <SmallBox id="subposition">{dataDetails.subposition}</SmallBox>
+            </SmallDiv>
+          </DescSmallDiv>
+
+          <BigDiv>
+            <SmallLabel>자기소개</SmallLabel>
+            <BigBox id="introduction">{dataDetails.introduction}</BigBox>
+          </BigDiv>
+        </DescContentsDiv>
+      </>
+    );
+  });
+
+  //2.
+  const [dataOngoing, setdataOngoing] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${APIURL}/profiles/ongoing/`)
+      .then((res) => {
+        console.log("getting from ::::", res.data);
+        setdataOngoing(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const drawOngoing = dataOngoing.map((dataOngoing, index) => {
+    return (
+      <>
+        <DescContentsDiv id="ongoing">
+          <CurrentStudy>{dataOngoing.ongoing}</CurrentStudy>
+        </DescContentsDiv>
+      </>
+    );
+  });
+
+  //3.
+  const [dataSkills, setDataSkills] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${APIURL}/profiles/skills/`)
+      .then((res) => {
+        console.log("getting from ::::", res.data);
+        setDataSkills(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const drawSkills = dataSkills.map((dataSkills, index) => {
+    return (
+      <>
+        <SkillHeadDiv>{dataSkills.skill_type}</SkillHeadDiv>
+        <SkillContents id='skills-details'>
+          <SkillDiv>{dataSkills.skill_name}</SkillDiv>
+        </SkillContents>
+
+      </>
+    );
+  });
+
   
-    //1. 
-    const [dataDetails, setdataDetails] = useState([])
-    useEffect(() => {
-      axios.get(`${APIURL}/profiles/details/`)
-        .then(res => {
-          console.log("getting from ::::", res.data)
-          setdataDetails(res.data)
-          
+
+  //4.
+  const [dataStudy, setDataStudy] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${APIURL}/profiles/study/`)
+      .then((res) => {
+        console.log("getting from ::::", res.data);
+        setDataStudy(res.data);
       })
-      .catch(err => {
-        console.log(err)
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const drawStudy = dataStudy.map((dataStudy, index) => {
+    return (
+      <>
+        <DescContentsDiv id="study">
+          <SkillSetDiv>
+            <SkillHeadDiv>{dataStudy.study_type}</SkillHeadDiv>
+
+            <SkillContents>
+              <SkillDiv>{dataStudy.study_name}</SkillDiv>
+            </SkillContents>
+          </SkillSetDiv>
+        </DescContentsDiv>
+      </>
+    );
+  });
+
+
+  //5.
+  const [dataCert, setDataCert] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${APIURL}/profiles/career/`)
+      .then((res) => {
+        console.log("getting from ::::", res.data);
+        setDataCareer(res.data);
       })
-    }, [])
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-    const drawDetails = dataDetails.map((dataDetails, index) => {
-      return(
-        <>
-        <DescContentsDiv id = "details">
-            <DescSmallDiv>
-              <SmallDiv>
-                <SmallLabel>학교/직장</SmallLabel>
-                <SmallBox id="belongs">{dataDetails.belongs}</SmallBox>
-              </SmallDiv>
-              <SmallDiv>
-                <SmallLabel>전공</SmallLabel>
-                <SmallBox id="major">{dataDetails.major}</SmallBox>
-              </SmallDiv>
-            </DescSmallDiv>
-
-             <DescSmallDiv>
-              <SmallDiv>
-                <SmallLabel>메인포지션</SmallLabel>
-                <SmallBox id="position">{dataDetails.position}</SmallBox>
-              </SmallDiv>
-              <SmallDiv>
-                <SmallLabel>서브포지션</SmallLabel>
-                <SmallBox id="subposition">{dataDetails.subposition}</SmallBox>
-              </SmallDiv>
-            </DescSmallDiv>
-
-            <BigDiv>
-              <SmallLabel>자기소개</SmallLabel>
-              <BigBox id="introduction">{dataDetails.introduction}</BigBox>
-            </BigDiv>
+  const drawCert = dataCert.map((dataCert, index) => {
+    return (
+      <>
+        <DescContentsDiv id ='cert'>
+            <LicenceDiv>
+              <LicenceBox>{dataCert.certification}</LicenceBox>
+            </LicenceDiv>
           </DescContentsDiv>
-        </>
-      )
-    })
+      </>
+    );
+  });
 
-    
-  
-    //2.
-    const [dataOngoing, setdataOngoing] = useState([])
-
-    useEffect(() => {
-      axios.get(`${APIURL}/profiles/ongoing/`)
-        .then(res => {
-          console.log("getting from ::::", res.data)
-          setdataOngoing(res.data)
+  //6.
+  const [dataCareer, setDataCareer] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`${APIURL}/profiles/career/`)
+      .then((res) => {
+        console.log("getting from ::::", res.data);
+        setDataCareer(res.data);
       })
-      .catch(err => {
-        console.log(err)
-      })
-    }, [])
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-    const drawOngoing = dataOngoing.map((dataOngoing, index) => {
-      return(
-        <>
-          <DescContentsDiv id = 'ongoing'>
-            <CurrentStudy>
-              {dataOngoing.ongoing}
-            </CurrentStudy>
+  const drawCareer = dataCareer.map((dataCareer, index) => {
+    return (
+      <>
+        <DescContentsDiv id='career'>
+            <CareerDiv>
+              <CareerBox>
+                <Career>{dataCareer.career_at}</Career>
+                <Career>{dataCareer.career_who}</Career>
+                <Career>{dataCareer.career_when}</Career>
+              </CareerBox>
+
+              <CareerDescDiv>
+                <CareerText>업무 내용</CareerText>
+                <CareerDesc>
+                  {dataCareer.career_what}
+                </CareerDesc>
+              </CareerDescDiv>
+              <CareerDescDiv>
+                <CareerText>성과</CareerText>
+                <CareerDesc>
+                  {dataCareer.career_achieve}
+
+                </CareerDesc>
+              </CareerDescDiv>
+              <CareerDescDiv>
+                <CareerText>사용 기술</CareerText>
+                <CareerDesc>{dataCareer.career_skills}</CareerDesc>
+              </CareerDescDiv>
+            </CareerDiv>
           </DescContentsDiv>
-        </>
-      )
-    })
+      </>
+    );
+  });
 
-    //3. 이거 오류남
-    // const [dataSkills, setDataSkills] = useState([])
-
-    // useEffect(() => {
-    //   axios.get(`${APIURL}/profiles/skills/`)
-    //     .then(res => {
-    //       console.log("getting from ::::", res.data)
-    //       setdataSkills(res.data)
-    //   })
-    //   .catch(err => {
-    //     console.log(err)
-    //   })
-    // }, [])
-
-    // const drawSkills = dataSkills.map((dataSkills, index) => {
-    //   return (
-    //     <> 
-    //     <DescContentsDiv id = 'skills'>
-    //       <SkillDiv>{dataSkills.skill_type}</SkillDiv>
-    //     </DescContentsDiv>
-    //     </>
-    //   );
-    // })
   /////////////////////
-
 
   return (
     <>
       <ProfileDiv>
-
         <ProfileInfoDiv>
-
           <ProfileImage />
 
           <ProfileFunctDiv>
-
             <ProfileText />
 
             <ProfileFollow />
 
             <ProfileTag />
-
           </ProfileFunctDiv>
-
         </ProfileInfoDiv>
 
-
         <DescDiv>
-
           <DescHead text="소개" />
 
           {/* <DescContentsDiv id = "details">
@@ -190,7 +291,6 @@ const ProfilePage = () => {
         </DescDiv>
 
         <DescDiv>
-
           <DescHead text="현재 진행 중" />
 
           {/* <DescContentsDiv id = 'ongoing'>
@@ -202,12 +302,10 @@ const ProfilePage = () => {
         </DescDiv>
 
         <DescDiv>
-
           <DescHead text="기술스택/Skill Set" />
 
-          <DescContentsDiv id = 'skills'>
-
-            <SkillSetDiv>
+          <DescContentsDiv id="skills">
+            {/* <SkillSetDiv>
               <SkillHeadDiv>
                 Programing Languages
               </SkillHeadDiv>
@@ -230,17 +328,15 @@ const ProfilePage = () => {
                 <SkillDiv>Express</SkillDiv>
                 <SkillDiv>JavaSpring</SkillDiv>
               </SkillContents>
-            </SkillSetDiv>
-
-          </DescContentsDiv> 
-          {/* {drawSkills} */}
+            </SkillSetDiv> */}
+            {drawSkills}
+          </DescContentsDiv>
         </DescDiv>
 
         <DescDiv>
-
           <DescHead text="개인공부" />
-
-          <DescContentsDiv>
+          {/* 
+          <DescContentsDiv id='study'>
 
             <SkillSetDiv>
               <SkillHeadDiv>
@@ -266,33 +362,28 @@ const ProfilePage = () => {
               </SkillContents>
             </SkillSetDiv>
 
-          </DescContentsDiv>
+          </DescContentsDiv> */}
+          {drawStudy}
         </DescDiv>
 
         <DescDiv>
-
           <DescHead text="보유 자격증" />
-
-          <DescContentsDiv>
-
+          {/* <DescContentsDiv id='cert'>
             <LicenceDiv>
               <LicenceBox>컴활1급</LicenceBox>
               <LicenceBox>정보처리기사</LicenceBox>
               <LicenceBox>리눅스마스터</LicenceBox>
               <LicenceBox>토익</LicenceBox>
             </LicenceDiv>
-
-          </DescContentsDiv>
+          </DescContentsDiv> */}
+          {drawCert}
         </DescDiv>
 
         <DescDiv>
-
           <DescHead text="경력" />
 
-          <DescContentsDiv>
-
+          {/* <DescContentsDiv id='career'>
             <CareerDiv>
-
               <CareerBox>
                 <Career>구글</Career>
                 <Career>웹 프론트엔드</Career>
@@ -302,13 +393,15 @@ const ProfilePage = () => {
               <CareerDescDiv>
                 <CareerText>업무 내용</CareerText>
                 <CareerDesc>
-                  서브 프론트엔드 개발자로 구독자 증대를 위한 기능 다수 개발 (기여도 30%)
+                  서브 프론트엔드 개발자로 구독자 증대를 위한 기능 다수 개발
+                  (기여도 30%)
                 </CareerDesc>
               </CareerDescDiv>
               <CareerDescDiv>
                 <CareerText>성과</CareerText>
                 <CareerDesc>
-                  콘텐츠 공유 기능, 직무 맞춤 콘텐츠 추천 기능 개발 → 구독 전환율 개선에 기여
+                  콘텐츠 공유 기능, 직무 맞춤 콘텐츠 추천 기능 개발 → 구독
+                  전환율 개선에 기여
                 </CareerDesc>
               </CareerDescDiv>
               <CareerDescDiv>
@@ -317,9 +410,7 @@ const ProfilePage = () => {
               </CareerDescDiv>
             </CareerDiv>
 
-
             <CareerDiv>
-
               <CareerBox>
                 <Career>구글</Career>
                 <Career>웹 프론트엔드</Career>
@@ -329,13 +420,15 @@ const ProfilePage = () => {
               <CareerDescDiv>
                 <CareerText>업무 내용</CareerText>
                 <CareerDesc>
-                  서브 프론트엔드 개발자로 구독자 증대를 위한 기능 다수 개발 (기여도 30%)
+                  서브 프론트엔드 개발자로 구독자 증대를 위한 기능 다수 개발
+                  (기여도 30%)
                 </CareerDesc>
               </CareerDescDiv>
               <CareerDescDiv>
                 <CareerText>성과</CareerText>
                 <CareerDesc>
-                  콘텐츠 공유 기능, 직무 맞춤 콘텐츠 추천 기능 개발 → 구독 전환율 개선에 기여
+                  콘텐츠 공유 기능, 직무 맞춤 콘텐츠 추천 기능 개발 → 구독
+                  전환율 개선에 기여
                 </CareerDesc>
               </CareerDescDiv>
               <CareerDescDiv>
@@ -343,9 +436,9 @@ const ProfilePage = () => {
                 <CareerDesc>Next.js, React-query</CareerDesc>
               </CareerDescDiv>
             </CareerDiv>
-          </DescContentsDiv>
+          </DescContentsDiv> */}
+          {drawCareer}
         </DescDiv>
-
       </ProfileDiv>
     </>
   );
