@@ -46,34 +46,32 @@ const ProfilePage = () => {
   const drawDetails = dataDetails.map((dataDetails, index) => {
     return (
       <>
-        <DescContentsDiv id="details">
-          <DescSmallDiv>
-            <SmallDiv>
-              <SmallLabel>학교/직장</SmallLabel>
-              <SmallBox id="belongs">{dataDetails.belongs}</SmallBox>
-            </SmallDiv>
-            <SmallDiv>
-              <SmallLabel>전공</SmallLabel>
-              <SmallBox id="major">{dataDetails.major}</SmallBox>
-            </SmallDiv>
-          </DescSmallDiv>
+        <DescSmallDiv>
+          <SmallDiv>
+            <SmallLabel>학교/직장</SmallLabel>
+            <SmallBox id="belongs">{dataDetails.belongs}</SmallBox>
+          </SmallDiv>
+          <SmallDiv>
+            <SmallLabel>전공</SmallLabel>
+            <SmallBox id="major">{dataDetails.major}</SmallBox>
+          </SmallDiv>
+        </DescSmallDiv>
 
-          <DescSmallDiv>
-            <SmallDiv>
-              <SmallLabel>메인포지션</SmallLabel>
-              <SmallBox id="position">{dataDetails.position}</SmallBox>
-            </SmallDiv>
-            <SmallDiv>
-              <SmallLabel>서브포지션</SmallLabel>
-              <SmallBox id="subposition">{dataDetails.subposition}</SmallBox>
-            </SmallDiv>
-          </DescSmallDiv>
+        <DescSmallDiv>
+          <SmallDiv>
+            <SmallLabel>메인포지션</SmallLabel>
+            <SmallBox id="position">{dataDetails.position}</SmallBox>
+          </SmallDiv>
+          <SmallDiv>
+            <SmallLabel>서브포지션</SmallLabel>
+            <SmallBox id="subposition">{dataDetails.subposition}</SmallBox>
+          </SmallDiv>
+        </DescSmallDiv>
 
-          <BigDiv>
-            <SmallLabel>자기소개</SmallLabel>
-            <BigBox id="introduction">{dataDetails.introduction}</BigBox>
-          </BigDiv>
-        </DescContentsDiv>
+        <BigDiv>
+          <SmallLabel>자기소개</SmallLabel>
+          <BigBox id="introduction">{dataDetails.introduction}</BigBox>
+        </BigDiv>
       </>
     );
   });
@@ -96,9 +94,7 @@ const ProfilePage = () => {
   const drawOngoing = dataOngoing.map((dataOngoing, index) => {
     return (
       <>
-        <DescContentsDiv id="ongoing">
-          <CurrentStudy>{dataOngoing.ongoing}</CurrentStudy>
-        </DescContentsDiv>
+        <CurrentStudy>{dataOngoing.ongoing}</CurrentStudy>
       </>
     );
   });
@@ -259,8 +255,8 @@ const ProfilePage = () => {
         <DescDiv>
           <DescHead text="소개" />
 
-          {/* <DescContentsDiv id = "details">
-            <DescSmallDiv>
+          <DescContentsDiv id = "details">
+            {/* <DescSmallDiv>
               <SmallDiv>
                 <SmallLabel>학교/직장</SmallLabel>
                 <SmallBox id="belongs">서강대학교</SmallBox>
@@ -285,19 +281,19 @@ const ProfilePage = () => {
             <BigDiv>
               <SmallLabel>자기소개</SmallLabel>
               <BigBox id="introduction">난 킹아영</BigBox>
-            </BigDiv>
-          </DescContentsDiv> */}
+            </BigDiv> */}
+          </DescContentsDiv>
           {drawDetails}
         </DescDiv>
 
         <DescDiv>
           <DescHead text="현재 진행 중" />
 
-          {/* <DescContentsDiv id = 'ongoing'>
-            <CurrentStudy>
+          <DescContentsDiv id = 'ongoing'>
+            {/* <CurrentStudy>
               현재 자바스크립트 공부 중이에요~!
-            </CurrentStudy>
-          </DescContentsDiv> */}
+            </CurrentStudy> */}
+          </DescContentsDiv>
           {drawOngoing}
         </DescDiv>
 
