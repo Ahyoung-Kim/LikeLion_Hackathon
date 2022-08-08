@@ -146,15 +146,13 @@ const ProfilePage = () => {
   const drawStudy = dataStudy.map((dataStudy, index) => {
     return (
       <>
-        <DescContentsDiv id="study">
-          <SkillSetDiv>
-            <SkillHeadDiv>{dataStudy.study_type}</SkillHeadDiv>
+        <SkillSetDiv>
+          <SkillHeadDiv>{dataStudy.study_type}</SkillHeadDiv>
 
-            <SkillContents>
-              <SkillDiv>{dataStudy.study_name}</SkillDiv>
-            </SkillContents>
-          </SkillSetDiv>
-        </DescContentsDiv>
+          <SkillContents>
+            <SkillDiv>{dataStudy.study_name}</SkillDiv>
+          </SkillContents>
+        </SkillSetDiv>
       </>
     );
   });
@@ -165,10 +163,10 @@ const ProfilePage = () => {
 
   useEffect(() => {
     axios
-      .get(`${APIURL}/profiles/career/`)
+      .get(`${APIURL}/profiles/cert/`)
       .then((res) => {
         console.log("getting from ::::", res.data);
-        setDataCareer(res.data);
+        setDataCert(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -178,11 +176,10 @@ const ProfilePage = () => {
   const drawCert = dataCert.map((dataCert, index) => {
     return (
       <>
-        <DescContentsDiv id ='cert'>
-            <LicenceDiv>
-              <LicenceBox>{dataCert.certification}</LicenceBox>
-            </LicenceDiv>
-          </DescContentsDiv>
+          <LicenceDiv>
+            <LicenceBox>{dataCert.certification}</LicenceBox>
+          </LicenceDiv>
+
       </>
     );
   });
@@ -204,33 +201,31 @@ const ProfilePage = () => {
   const drawCareer = dataCareer.map((dataCareer, index) => {
     return (
       <>
-        <DescContentsDiv id='career'>
-            <CareerDiv>
-              <CareerBox>
-                <Career>{dataCareer.career_at}</Career>
-                <Career>{dataCareer.career_who}</Career>
-                <Career>{dataCareer.career_when}</Career>
-              </CareerBox>
+        <CareerDiv>
+          <CareerBox>
+            <Career>{dataCareer.career_at}</Career>
+            <Career>{dataCareer.career_who}</Career>
+            <Career>{dataCareer.career_when}</Career>
+          </CareerBox>
 
-              <CareerDescDiv>
-                <CareerText>업무 내용</CareerText>
-                <CareerDesc>
-                  {dataCareer.career_what}
-                </CareerDesc>
-              </CareerDescDiv>
-              <CareerDescDiv>
-                <CareerText>성과</CareerText>
-                <CareerDesc>
-                  {dataCareer.career_achieve}
+          <CareerDescDiv>
+            <CareerText>업무 내용</CareerText>
+            <CareerDesc>
+              {dataCareer.career_what}
+            </CareerDesc>
+          </CareerDescDiv>
+          <CareerDescDiv>
+            <CareerText>성과</CareerText>
+            <CareerDesc>
+              {dataCareer.career_achieve}
 
-                </CareerDesc>
-              </CareerDescDiv>
-              <CareerDescDiv>
-                <CareerText>사용 기술</CareerText>
-                <CareerDesc>{dataCareer.career_skills}</CareerDesc>
-              </CareerDescDiv>
-            </CareerDiv>
-          </DescContentsDiv>
+            </CareerDesc>
+          </CareerDescDiv>
+          <CareerDescDiv>
+            <CareerText>사용 기술</CareerText>
+            <CareerDesc>{dataCareer.career_skills}</CareerDesc>
+          </CareerDescDiv>
+        </CareerDiv>
       </>
     );
   });
@@ -256,6 +251,7 @@ const ProfilePage = () => {
           <DescHead text="소개" />
 
           <DescContentsDiv id = "details">
+            {drawDetails}
             {/* <DescSmallDiv>
               <SmallDiv>
                 <SmallLabel>학교/직장</SmallLabel>
@@ -283,18 +279,19 @@ const ProfilePage = () => {
               <BigBox id="introduction">난 킹아영</BigBox>
             </BigDiv> */}
           </DescContentsDiv>
-          {drawDetails}
+          
         </DescDiv>
 
         <DescDiv>
           <DescHead text="현재 진행 중" />
 
           <DescContentsDiv id = 'ongoing'>
+            {drawOngoing}
             {/* <CurrentStudy>
               현재 자바스크립트 공부 중이에요~!
             </CurrentStudy> */}
           </DescContentsDiv>
-          {drawOngoing}
+          
         </DescDiv>
 
         <DescDiv>
@@ -331,9 +328,9 @@ const ProfilePage = () => {
 
         <DescDiv>
           <DescHead text="개인공부" />
-          {/* 
           <DescContentsDiv id='study'>
-
+            {drawStudy}
+            {/* 
             <SkillSetDiv>
               <SkillHeadDiv>
                 CS
@@ -356,14 +353,15 @@ const ProfilePage = () => {
                 <SkillDiv>BOJ</SkillDiv>
                 <SkillDiv>Programmers</SkillDiv>
               </SkillContents>
-            </SkillSetDiv>
+            </SkillSetDiv> */}
 
-          </DescContentsDiv> */}
-          {drawStudy}
+          </DescContentsDiv>
+          
         </DescDiv>
 
         <DescDiv>
           <DescHead text="보유 자격증" />
+          {drawCert}
           {/* <DescContentsDiv id='cert'>
             <LicenceDiv>
               <LicenceBox>컴활1급</LicenceBox>
@@ -372,14 +370,13 @@ const ProfilePage = () => {
               <LicenceBox>토익</LicenceBox>
             </LicenceDiv>
           </DescContentsDiv> */}
-          {drawCert}
         </DescDiv>
 
         <DescDiv>
           <DescHead text="경력" />
-
-          {/* <DescContentsDiv id='career'>
-            <CareerDiv>
+          <DescContentsDiv id='career'>
+            {drawCareer}
+            {/* <CareerDiv>
               <CareerBox>
                 <Career>구글</Career>
                 <Career>웹 프론트엔드</Career>
@@ -431,9 +428,8 @@ const ProfilePage = () => {
                 <CareerText>사용 기술</CareerText>
                 <CareerDesc>Next.js, React-query</CareerDesc>
               </CareerDescDiv>
-            </CareerDiv>
-          </DescContentsDiv> */}
-          {drawCareer}
+            </CareerDiv> */}
+          </DescContentsDiv>
         </DescDiv>
       </ProfileDiv>
     </>
