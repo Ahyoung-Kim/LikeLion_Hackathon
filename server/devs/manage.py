@@ -19,7 +19,7 @@ def main():
     #execute_from_command_line(sys.argv)
 
     try:
-        if sys.argv[2] == 'react':
+        if len(sys.argv) > 2 and sys.argv[2] == 'react':
             project_root = os.getcwd()
             os.chdir(os.path.join(project_root, "../../client/devs"))
             os.system("npm run build")

@@ -25,8 +25,4 @@ class UserLoginSerializer(serializers.Serializer):
         password = data.get("password", None)
         user = authenticate(email=email, password=password)
 
-        # TODO
-        if user is None:
-            return "false"
-
-        return user.email
+        return user
