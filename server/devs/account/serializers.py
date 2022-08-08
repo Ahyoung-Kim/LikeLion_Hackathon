@@ -1,3 +1,4 @@
+import email
 from .models import User
 from rest_framework import serializers
 from django.contrib.auth import authenticate
@@ -16,16 +17,16 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class UserLoginSerializer(serializers.Serializer):
-    id = serializers.CharField()
+    email = serializers.CharField()
     password = serializers.CharField()
 
     def validate(self, data):
-        id = data.get("id", None)
+        email = data.get("email", None)
         password = data.get("password", None)
-        user = authenticate(id=id, password=password)
+        user = authenticate(email=email, password=password)
 
         # TODO
         if user is None:
             return "false"
 
-        return user.id
+        return user.email
