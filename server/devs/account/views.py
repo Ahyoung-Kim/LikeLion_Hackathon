@@ -53,19 +53,19 @@ class UserLoginView(GenericAPIView):
 
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
-        id = serializer.is_valid(raise_exception=True)
+        email = serializer.is_valid(raise_exception=True)
 
-        if id == "false":
+        if email == "false":
             response = {
                 "success": "false",
                 "status_code": status.HTTP_200_OK,
-                "id": "",
+                "email": "",
             }
         else:
             response = {
                 "success": "true",
                 "status_code": status.HTTP_200_OK,
-                "id": id,
+                "email": email,
             }
 
         return Response(response, status=status.HTTP_200_OK)
