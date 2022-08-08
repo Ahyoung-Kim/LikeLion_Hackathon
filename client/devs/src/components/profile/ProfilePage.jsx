@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect  } from 'react';
-import axios from 'axios';
+import axios from 'axios'
 import { APIURL } from '../../config/key';
 import { 
   ProfileDiv, ProfileInfoDiv, ProfileImgDiv,
@@ -30,24 +30,106 @@ const ProfilePage = () => {
 
   //////////////////////백엔드에서 정보 가져오기
   
+    //1. 
     const [dataDetails, setdataDetails] = useState([])
     useEffect(() => {
-      axios.get(`${APIURL}/profile/details/`)
-
-      //아래 예시들은 잘 받아와집니다
-      //axios.get('https://jsonplaceholder.typicode.com/users')
-      //axios.get('https://v2.jokeapi.dev/joke/Any')
+      axios.get(`${APIURL}/profiles/details/`)
         .then(res => {
-          console.log(res.data)
+          console.log("getting from ::::", res.data)
+          setdataDetails(res.data)
+          
       })
       .catch(err => {
         console.log(err)
       })
+    }, [])
+
+    const drawDetails = dataDetails.map((dataDetails, index) => {
+      return(
+        <>
+        <DescContentsDiv id = "details">
+            <DescSmallDiv>
+              <SmallDiv>
+                <SmallLabel>학교/직장</SmallLabel>
+                <SmallBox id="belongs">{dataDetails.belongs}</SmallBox>
+              </SmallDiv>
+              <SmallDiv>
+                <SmallLabel>전공</SmallLabel>
+                <SmallBox id="major">{dataDetails.major}</SmallBox>
+              </SmallDiv>
+            </DescSmallDiv>
+
+             <DescSmallDiv>
+              <SmallDiv>
+                <SmallLabel>메인포지션</SmallLabel>
+                <SmallBox id="position">{dataDetails.position}</SmallBox>
+              </SmallDiv>
+              <SmallDiv>
+                <SmallLabel>서브포지션</SmallLabel>
+                <SmallBox id="subposition">{dataDetails.subposition}</SmallBox>
+              </SmallDiv>
+            </DescSmallDiv>
+
+            <BigDiv>
+              <SmallLabel>자기소개</SmallLabel>
+              <BigBox id="introduction">{dataDetails.introduction}</BigBox>
+            </BigDiv>
+          </DescContentsDiv>
+        </>
+      )
     })
+
+    
   
+    //2.
+    const [dataOngoing, setdataOngoing] = useState([])
 
+    useEffect(() => {
+      axios.get(`${APIURL}/profiles/ongoing/`)
+        .then(res => {
+          console.log("getting from ::::", res.data)
+          setdataOngoing(res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }, [])
 
+    const drawOngoing = dataOngoing.map((dataOngoing, index) => {
+      return(
+        <>
+          <DescContentsDiv id = 'ongoing'>
+            <CurrentStudy>
+              {dataOngoing.ongoing}
+            </CurrentStudy>
+          </DescContentsDiv>
+        </>
+      )
+    })
 
+    //3. 이거 오류남
+    // const [dataSkills, setDataSkills] = useState([])
+
+    // useEffect(() => {
+    //   axios.get(`${APIURL}/profiles/skills/`)
+    //     .then(res => {
+    //       console.log("getting from ::::", res.data)
+    //       setdataSkills(res.data)
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //   })
+    // }, [])
+
+    // const drawSkills = dataSkills.map((dataSkills, index) => {
+    //   return (
+    //     <> 
+    //     <DescContentsDiv id = 'skills'>
+    //       <SkillDiv>{dataSkills.skill_type}</SkillDiv>
+    //     </DescContentsDiv>
+    //     </>
+    //   );
+    // })
   /////////////////////
 
 
@@ -76,7 +158,7 @@ const ProfilePage = () => {
 
           <DescHead text="소개" />
 
-          <DescContentsDiv id = "details">
+          {/* <DescContentsDiv id = "details">
             <DescSmallDiv>
               <SmallDiv>
                 <SmallLabel>학교/직장</SmallLabel>
@@ -88,7 +170,7 @@ const ProfilePage = () => {
               </SmallDiv>
             </DescSmallDiv>
 
-            <DescSmallDiv>
+             <DescSmallDiv>
               <SmallDiv>
                 <SmallLabel>메인포지션</SmallLabel>
                 <SmallBox id="position">웹 프론트엔드</SmallBox>
@@ -103,19 +185,20 @@ const ProfilePage = () => {
               <SmallLabel>자기소개</SmallLabel>
               <BigBox id="introduction">난 킹아영</BigBox>
             </BigDiv>
-          </DescContentsDiv>
-
+          </DescContentsDiv> */}
+          {drawDetails}
         </DescDiv>
 
         <DescDiv>
 
           <DescHead text="현재 진행 중" />
 
-          <DescContentsDiv id = 'ongoing'>
+          {/* <DescContentsDiv id = 'ongoing'>
             <CurrentStudy>
               현재 자바스크립트 공부 중이에요~!
             </CurrentStudy>
-          </DescContentsDiv>
+          </DescContentsDiv> */}
+          {drawOngoing}
         </DescDiv>
 
         <DescDiv>
@@ -149,7 +232,8 @@ const ProfilePage = () => {
               </SkillContents>
             </SkillSetDiv>
 
-          </DescContentsDiv>
+          </DescContentsDiv> 
+          {/* {drawSkills} */}
         </DescDiv>
 
         <DescDiv>
