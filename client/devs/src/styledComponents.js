@@ -293,8 +293,8 @@ object-fit: contain;
 
 export const ProfileImgEditBtn = styled.span`
 display: inline-block;
-width: 30px;
-height: 30px;
+width: 35px;
+height: 35px;
 // line-height: 30px;
 border-radius: 50%;
 background-color: black;
@@ -305,8 +305,8 @@ display: flex;
 justify-content: center;
 align-items: center;
 position: absolute;
-right: 5px;
-bottom: 5px;
+right: 8px;
+bottom: 8px;
 cursor: pointer;
 `
 // --------------------------------------
@@ -320,6 +320,7 @@ align-items: center;
 
 // -----------
 export const ProfileTextDiv = styled.div`
+// background-color: aqua;
 height: max-content;
 margin-left: 30px;
 `
@@ -382,13 +383,14 @@ cursor:pointer;
 `
 // ----------
 export const TagDiv = styled.div`
+// background-color: orange;
 display: flex;
 flex-wrap: wrap;
 max-width: 100%;
 width: max-content;
 height: max-content;
 margin-left: 20px;
-margin-top: 10px;
+margin-top: 20px;
 `
 export const Tag = styled.div`
 line-height: 20px;
@@ -457,6 +459,7 @@ width: 120px;
 `
 export const SmallBox = styled.div`
 width: calc((923px / 2) - 120px);
+min-height: 35px;
 line-height: 35px;
 background-color: #F4F4F4;
 border-radius: 5px;
@@ -471,6 +474,7 @@ align-items: center;
 `
 export const BigBox = styled.div`
 width: calc(923px - 120px);
+min-height: 100px;
 line-height: 100px;
 background-color: #F4F4F4;
 border-radius: 5px;
@@ -499,6 +503,7 @@ padding-left: 20px;
 export const SkillContents = styled.div`
 background-color: #F4F4F4;
 max-width: 100%;
+min-height: 63px;
 display: flex;
 flex-wrap: wrap;
 padding: 5px 0;
@@ -570,4 +575,58 @@ padding: 0 10px;
 display: flex;
 flex-wrap: wrap;
 align-items: center;
+`
+
+// Profile Image Upload
+export const ImageDiv = styled.div`
+// background-color: aqua;
+display: flex;
+flex-direction: column;
+align-items: center;
+`
+
+export const ImageInputDiv = styled.div`
+// background-color: white;
+// width: max-content;
+width: 82px;
+margin-bottom: 80px;
+`
+
+export const ImageInput = styled.input`
+// background-color: rgba(178, 153, 176, 1);
+// margin: 0 auto;
+`
+
+export const ImageBox = styled.div`
+width: 350px;
+height: 350px;
+background-color: white;
+border: 3px solid white;
+border-radius: 50%;
+overflow: hidden;
+margin-bottom: 20px;
+`
+
+export const Image = styled.img`
+width: 100%;
+height: 100%;
+object-fit: contain;
+`
+
+export const ImageUploadBtn = styled.div`
+background-color: #FFB300;
+border: 2px solid #FFB300;
+color: white;
+font-weight: bold;
+text-align: center;
+width: 300px;
+line-height: 40px;
+border-radius: 8px;
+cursor: pointer;
+transition: .45s;
+
+&:hover{
+background-color: white;
+color: #FFB300;
+}
 `

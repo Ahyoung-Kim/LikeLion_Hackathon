@@ -15,5 +15,5 @@ export const removeCookie = (name) => {
 }
 
 export const getAllCookie = () => {
-  return cookies.getAll();
+  return cookies.getAll()
 }

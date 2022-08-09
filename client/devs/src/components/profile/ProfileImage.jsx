@@ -6,14 +6,20 @@ import {
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const ProfileImage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const onClick = () => {
+    navigate(`${location.pathname}/image`)
+  }
   return (
     <>
       <ProfileImgDiv>
         <ProfileImg src={require('../../static/likelion.jpg')} />
         <ProfileImgEditBtn>
-          <FontAwesomeIcon icon={faPen} />
+          <FontAwesomeIcon onClick={onClick} icon={faPen} />
         </ProfileImgEditBtn>
       </ProfileImgDiv>
     </>

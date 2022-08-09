@@ -44,7 +44,9 @@ const NavigationBar = () => {
   const goLogout = () => {
     const keys = Object.keys(getAllCookie());
     for(let i=0; i<keys.length; i++){
-      removeCookie(keys[i]);
+      if(keys[i] !== 'csrftoken'){
+        removeCookie(keys[i]);
+      }
     }
 
     setTimeout(() => {
@@ -61,13 +63,15 @@ const NavigationBar = () => {
     <div className="navbar-big">
 
       <section className="navbar">
-        <div className="nav-logo" onClick={goMain}>
-          <span className="maintitle" href="#">
-            뎁스
-          </span>
-          <span className="subtitle" href="#">
-            devStory
-          </span>
+        <div className="nav-logo">
+          <div  onClick={goMain}>
+            <span className="maintitle" href="#">
+              뎁스
+            </span>
+            <span className="subtitle" href="#">
+              devStory
+            </span>
+          </div>
 
           <div style={{display:'flex', width:'350px', justifyContent:'space-between', alignItems: 'center'}}>
             <input className='nav-searchbar' type='text' placeholder="Search"></input>

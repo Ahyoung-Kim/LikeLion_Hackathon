@@ -17,8 +17,8 @@ const ProfileText = memo(() => {
             <FontAwesomeIcon icon={faGear} />
           </ProfileEditBtn>
         </ProfileName>
-        <ProfileDesc>웹 프론트엔드</ProfileDesc>
-        <ProfileDesc>서강대학교</ProfileDesc>
+        {/* <ProfileDesc>웹 프론트엔드</ProfileDesc>
+        <ProfileDesc>서강대학교</ProfileDesc> */}
       </ProfileTextDiv>
     </>
   );
