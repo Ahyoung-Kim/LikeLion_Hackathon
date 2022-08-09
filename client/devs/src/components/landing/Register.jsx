@@ -130,12 +130,17 @@ const Register = () => {
       navigate('/login');
     } else {
       console.log('sign up fail')
+      alert('이메일 또는 닉네임이 중복되었습니다.')
     }
   }
 
   const onRegister = () => {
-    if(!email || !pwd || !nickname || !uname){
+    if(!email || !pwd || !nickname || !uname || !pwd2){
       alert('모든 정보를 입력해주세요!')
+    } else if(!isRightEmail){
+      alert('이메일 표기식이 잘못되었습니다!')
+    } else if(isPwdDiff) {
+      alert('비밀번호가 일치하지 않습니다')
     } else {
       sendRequest();
     }

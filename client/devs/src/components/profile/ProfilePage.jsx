@@ -32,7 +32,7 @@ const ProfilePage = () => {
   
     const [dataDetails, setdataDetails] = useState([])
     useEffect(() => {
-      axios.get(`${APIURL}/profile/details/`)
+      axios.get(`${APIURL}/profiles/details/`)
 
       //아래 예시들은 잘 받아와집니다
       //axios.get('https://jsonplaceholder.typicode.com/users')
@@ -43,7 +43,7 @@ const ProfilePage = () => {
       .catch(err => {
         console.log(err)
       })
-    })
+    }, [])
   
 
 

@@ -53,7 +53,7 @@ const LoginInput = () => {
     console.log(res);
     if(res.data.success === 'true'){
       console.log('login success')
-      setCookie('user_id', email, {maxAge: 3000, path: '/'})
+      setCookie('user_id', res.data.id, {maxAge: 3000, path: '/'})
       navigate('/main')
     } else {
       console.log('login fail')

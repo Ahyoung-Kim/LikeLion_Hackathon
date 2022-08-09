@@ -31,6 +31,7 @@
 .nav-icons{
     /* width: 200px; */
     display: flex;
+    align-items: center;
     /* justify-content: space-between; */
 }
 
@@ -79,8 +80,9 @@
 .account-div {
     display: inline-block;
     background-color:rgba(255, 179, 0, 1);
-    width: 100px;
-    line-height: 32px;
+    width: 80px;
+    font-size: 14px;
+    line-height: 28px;
     text-align: center;
     border: 2px solid rgba(255, 179, 0, 1);
     margin: 0 5px;
@@ -93,3 +95,4 @@
     background-color: white;
     color: rgba(255, 179, 0, 1);
 }
+

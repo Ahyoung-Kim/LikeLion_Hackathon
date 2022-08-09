@@ -12,10 +12,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import "./navigationbar.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getCookie } from "../config/cookie";
+import { getAllCookie, getCookie, removeCookie } from "../config/cookie";
 
 const NavigationBar = () => {
   const [isLogin, setIsLogin] = useState(false);
+  const [isClick, setIsClick] = useState(false);
   const location = useLocation().pathname;
 
   useEffect(() => {
@@ -28,9 +29,9 @@ const NavigationBar = () => {
 
   const navigate = useNavigate();
   const goProfile = () => {
-    // 임시 경로
-    navigate("/profile/123");
+    navigate(`/profile/${getCookie('user_id')}`);
   };
+
   const goMain = () => {
     navigate("/main");
   };
@@ -39,6 +40,16 @@ const NavigationBar = () => {
   }
   const goRegister = () => {
     navigate('/');
+  }
+  const goLogout = () => {
+    const keys = Object.keys(getAllCookie());
+    for(let i=0; i<keys.length; i++){
+      removeCookie(keys[i]);
+    }
+
+    setTimeout(() => {
+      window.location.replace('/main')
+    }, 500);
   }
 
   if (location === "/" || location === "/login") {
@@ -85,6 +96,8 @@ const NavigationBar = () => {
               src={require("./search/profile-img.png")}
               onClick={goProfile}
             />
+
+            <span onClick={goLogout} className="account-div">로그아웃</span>
           </div>
         ) : (
           <div className="nav-icons">
