@@ -6,8 +6,11 @@ import {
   DescDiv, Career, CareerDescDiv, CareerText, CareerDesc
 } from '../../styledComponents';
 import DescHead from './DescHead';
+import CareerPopup from './popup/CareerPopup';
 
 const Careers = memo(() => {
+  const [isAdd, setIsAdd] = useState(false);
+
   const [career, setCareer] = useState([]);
 
   useEffect(() => {
@@ -23,9 +26,14 @@ const Careers = memo(() => {
   }, [])
 
   return (
+  <>
+    {isAdd && (
+      <CareerPopup setPopup={setIsAdd} />
+    )}
+
     <DescDiv>
 
-      <DescHead text="경력" />
+      <DescHead text="경력" setPopup={setIsAdd} />
 
       <DescContentsDiv>
 
@@ -41,22 +49,22 @@ const Careers = memo(() => {
                   <Career>{data.career_who}</Career>
                   <Career>{data.career_when}</Career>
                 </CareerBox>
-                
+
                 <CareerDescDiv>
                   <CareerText>업무 내용</CareerText>
                   <CareerDesc>{data.career_what}</CareerDesc>
                 </CareerDescDiv>
-                
+
                 <CareerDescDiv>
                   <CareerText>성과</CareerText>
                   <CareerDesc>{data.career_achieve}</CareerDesc>
                 </CareerDescDiv>
-                
+
                 <CareerDescDiv>
                   <CareerText>사용 기술</CareerText>
                   <CareerDesc>{data.career_skills}</CareerDesc>
                 </CareerDescDiv>
-                
+
               </CareerDiv>
             ))}
           </>
@@ -65,6 +73,7 @@ const Careers = memo(() => {
       </DescContentsDiv>
       
     </DescDiv>
+  </>
   );
 });
 

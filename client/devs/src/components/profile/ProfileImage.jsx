@@ -8,11 +8,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const ProfileImage = () => {
+const ProfileImage = ({ setPopup }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const onClick = () => {
-    navigate(`${location.pathname}/image`)
+    // navigate(`${location.pathname}/image`)
+    setPopup(true);
   }
   return (
     <>

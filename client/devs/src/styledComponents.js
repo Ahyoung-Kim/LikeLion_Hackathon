@@ -630,3 +630,126 @@ background-color: white;
 color: #FFB300;
 }
 `
+
+
+// POPUP
+export const PopupDiv = styled.div`
+width: 100%;
+height: 100%;
+position: fixed;
+top: 0;
+left: 0;
+z-index: 100;
+background-color: rgba(0, 0, 0, .2);
+display: flex;
+justify-content: center;
+align-items: center;
+`
+
+export const PopupBox = styled.div`
+width: 723px;
+// height: 759px;
+background-color: #FCF4DE;
+padding: 20px 20px 40px;
+display: flex;
+flex-direction: column;
+align-items: center;
+border-radius: 7px;
+position: relative;
+`
+
+export const PopupHead = styled.div`
+width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 50px;
+`
+
+export const PopupText = styled.p`
+font-size: 28px;
+font-weight: bold;
+`
+
+export const PopupXMark = {
+  cursor: 'pointer',
+  fontSize: '28px'
+}
+
+export const PopupInputDiv = styled.div`
+margin-bottom: 30px;
+`
+
+export const PopupInputText = styled.div`
+font-weight: bold;
+font-size: 18px;
+margin-bottom: 10px;
+`
+
+export const PopupInput = styled.input`
+width: 670px;
+line-height: 35px;
+border: none;
+border-radius: 5px;
+padding: 0 10px;
+`
+
+export const PopupDateDiv = styled.div`
+width: 670px;
+display: flex;
+margin-bottom: 30px;
+`
+
+export const PopupDateSmall = styled.div`
+width: 50%;
+// background-color: orange;
+`
+export const PopupDateText = styled.div`
+font-weight: bold;
+font-size: 18px;
+margin-bottom: 10px;
+`
+export const PopupDateInputDiv = styled.div`
+display: flex;
+// justify-content: space-between;
+align-items: center;
+`
+
+export const PopupDateInput = styled.input`
+width: 43%;
+line-height: 35px;
+border: none;
+border-radius: 5px;
+padding: 0 10px;
+margin-right: 25px;
+`
+
+export const PopupTextarea = styled.textarea`
+width: 670px;
+height: 100px;
+padding: 10px;
+border: none;
+border-radius: 5px;
+`
+
+export const PopupSaveBtn = styled.div`
+background-color: #FFB300;
+font-weight: bold;
+font-size: 18px;
+width: 150px;
+color: white;
+line-height: 36px;
+text-align: center;
+border-radius: 10px;
+border: 2px solid #FFB300;
+transition: .45s;
+position: absolute;
+right: 20px;
+bottom: 20px;
+cursor: pointer;
+
+&:hover{
+  color: #FFB300;
+  background-color: white;
+}
+`
