@@ -37,12 +37,12 @@ class UserView(CreateAPIView):
 
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
-        
+
         try:
             serializer.is_valid(raise_exception=True)
         except:
             status_code = status.HTTP_200_OK
-            return Response({'success': "false", 'status code': status_code,} , status=status_code)
+            return Response({'success': "false", 'status code': status_code, }, status=status_code)
         serializer.save()  # serializer 내부의 create() 호출
         status_code = status.HTTP_201_CREATED  # 성공
         response = {
