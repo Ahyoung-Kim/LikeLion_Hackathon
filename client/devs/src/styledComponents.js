@@ -753,3 +753,37 @@ cursor: pointer;
   background-color: white;
 }
 `
+
+//팬, 아이돌 팝업
+
+export const CardUnit = styled.section`
+display: flex;
+align-items: center;
+background-color: #ede4b4;
+border-radius: 20px;
+width:  600px;
+height: 180px;
+`
+
+export const CardImgNameBox = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: space-evenly;
+  align-items: center;
+`
+export const CardImg = styled.img`
+  width: 66px; 
+  height: 66px;
+  border: none;
+  border-radius: 50%;
+`
+
+export const CardUserName = styled.div`
+  font-size: 26px;
+  font-weight: bold;
+`
+
+export const CardUserDesc = styled.div`
+  flex:2;
+  font-size: 24px;
+`

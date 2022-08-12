@@ -31,6 +31,7 @@ $ source myvenv/Scripts/activate
 $ pip install django
 $ pip install django-cors-headers
 $ pip install djangorestframework
+$ pip install Pillow
 
 // pip freeze로 설치 확인
 ```

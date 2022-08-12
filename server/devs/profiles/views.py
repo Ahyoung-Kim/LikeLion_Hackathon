@@ -13,6 +13,16 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
+class UserHashtagViewSet(viewsets.ModelViewSet):
+    queryset = UserHashtag.objects.all()
+    serializer_class = UserHashtagSerializer
+
+
+class UserImgViewSet(viewsets.ModelViewSet):
+    queryset = UserImg.objects.all()
+    serializer_class = UserImgSerializer
+
+
 class UserDetailsViewSet(viewsets.ModelViewSet):
     queryset = UserDetails.objects.all()
     serializer_class = UserDetailsSerializer
@@ -60,11 +70,13 @@ class FollowViewSet(viewsets.ModelViewSet):
     # TODO
     # 현재 유저를 기준으로 count
     def count_following(self):
-        filter = Follow.objects.filter(following = 'cfb6b570a8a846f49c26d58d37aef48f')
+        filter = Follow.objects.filter(
+            following='cfb6b570a8a846f49c26d58d37aef48f')
         return filter.count()
 
     def count_follower(self):
-        filter = Follow.objects.filter(follower = 'cfb6b570a8a846f49c26d58d37aef48f')
+        filter = Follow.objects.filter(
+            follower='cfb6b570a8a846f49c26d58d37aef48f')
         return filter.count()
 
     def list(self, request, *args, **kwargs):
@@ -87,11 +99,12 @@ class FollowViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        try: # unfollow
-            instance = self.queryset.get(following=serializer.validated_data['following'], follower=serializer.validated_data['follower'])
+        try:  # unfollow
+            instance = self.queryset.get(
+                following=serializer.validated_data['following'], follower=serializer.validated_data['follower'])
             self.perform_destroy(instance)
 
-        except: # follow
+        except:  # follow
             self.perform_create(serializer)
 
         headers = self.get_success_headers(serializer.data)
