@@ -4,25 +4,25 @@ import {
   CardUnit, CardUserName, CardUserDesc, CardImg, CardImgNameBox
 } from '../../../styledComponents';
 import PopupHeader from './PopupHeader';
-const  MyFanPopup = memo(({setPopup}) => {
+const  MyFanPopup = memo(({ setPopup }) => {
 
     return (
       
-      <>       
-        {setPopup && (
+      <>
         <PopupDiv>
-        <PopupBox>
+          <PopupBox>
 
-        <PopupHeader setPopup={setPopup} text="나의 FAN" />
-            <CardUnit>
-                <CardImgNameBox>
-                  <CardImg src={require('../../../static/profile-img.png')}></CardImg>
-                  <CardUserName>도영</CardUserName>
-                </CardImgNameBox>
-                <CardUserDesc>Front-End Developer</CardUserDesc>
-            </CardUnit>
-        </PopupBox>
-        </PopupDiv>)}
+              <PopupHeader setPopup={setPopup} text="나의 FAN" />
+
+              <CardUnit>
+                  <CardImgNameBox>
+                    <CardImg src={require('../../../static/profile-img.png')}></CardImg>
+                    <CardUserName>도영</CardUserName>
+                  </CardImgNameBox>
+                  <CardUserDesc>Front-End Developer</CardUserDesc>
+              </CardUnit>
+          </PopupBox>
+        </PopupDiv>
       </>
     );
   });

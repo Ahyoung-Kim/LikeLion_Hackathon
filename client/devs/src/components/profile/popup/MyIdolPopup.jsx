@@ -9,10 +9,10 @@ const  MyIdolPopup = memo(({setPopup}) => {
     return (
       
       <>       
-        {setPopup && (<PopupDiv>
-        <PopupBox>
+        <PopupDiv>
+          <PopupBox>
 
-        <PopupHeader setPopup={setPopup} text="나의 IDOL" />
+            <PopupHeader setPopup={setPopup} text="나의 IDOL" />
             <CardUnit>
                 <CardImgNameBox>
                   <CardImg src={require('../../../static/profile-img.png')}></CardImg>
@@ -20,8 +20,8 @@ const  MyIdolPopup = memo(({setPopup}) => {
                 </CardImgNameBox>
                 <CardUserDesc>Front-End Developer</CardUserDesc>
             </CardUnit>
-        </PopupBox>
-        </PopupDiv>)}
+          </PopupBox>
+        </PopupDiv>
       </>
     );
   });
