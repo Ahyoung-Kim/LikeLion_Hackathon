@@ -3,6 +3,7 @@ from .models import *
 
 # Register your models here.
 admin.site.register(UserHashtag)
+admin.site.register(UserImg)
 admin.site.register(UserDetails)
 admin.site.register(UserOngoing)
 admin.site.register(UserSkills)

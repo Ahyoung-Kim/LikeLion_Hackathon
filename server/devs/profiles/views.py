@@ -20,6 +20,7 @@ from django.views.decorators.csrf import csrf_exempt
 class UserHashtagViewSet(viewsets.ModelViewSet):
     queryset = UserHashtag.objects.all()
     serializer_class = UserHashtagSerializer
+    lookup_field = "user"
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -29,6 +30,7 @@ class UserHashtagViewSet(viewsets.ModelViewSet):
 class UserImgViewSet(viewsets.ModelViewSet):
     queryset = UserImg.objects.all()
     serializer_class = UserImgSerializer
+    lookup_field = "user"
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -38,6 +40,7 @@ class UserImgViewSet(viewsets.ModelViewSet):
 class UserDetailsViewSet(viewsets.ModelViewSet):
     queryset = UserDetails.objects.all()
     serializer_class = UserDetailsSerializer
+    lookup_field = "user"
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -47,6 +50,7 @@ class UserDetailsViewSet(viewsets.ModelViewSet):
 class UserOngoingViewSet(viewsets.ModelViewSet):
     queryset = UserOngoing.objects.all()
     serializer_class = UserOngoingSerializer
+    lookup_field = "user"
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -56,6 +60,7 @@ class UserOngoingViewSet(viewsets.ModelViewSet):
 class UserSkillsViewSet(viewsets.ModelViewSet):
     queryset = UserSkills.objects.all()
     serializer_class = UserSkillsSerializer
+    lookup_field = "user"
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -74,6 +79,7 @@ class UserSkillsDetailsViewSet(viewsets.ModelViewSet):
 class UserStudyViewSet(viewsets.ModelViewSet):
     queryset = UserStudy.objects.all()
     serializer_class = UserStudySerializer
+    lookup_field = "user"
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -92,18 +98,28 @@ class UserStudyDetailsViewSet(viewsets.ModelViewSet):
 class UserCertViewSet(viewsets.ModelViewSet):
     queryset = UserCert.objects.all()
     serializer_class = UserCertSerializer
+    lookup_field = "user"
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+    def retrieve(self, request, *args, **kwargs):
+        serializer = self.get_serializer(self.get_queryset(), many=True)
+        return Response(data=serializer.data)
 
 
 @method_decorator(csrf_exempt, name='dispatch')
 class UserCareerViewSet(viewsets.ModelViewSet):
     queryset = UserCareer.objects.all()
     serializer_class = UserCareerSerializer
+    lookup_field = "user"
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+    def retrieve(self, request, *args, **kwargs):
+        serializer = self.get_serializer(self.get_queryset(), many=True)
+        return Response(data=serializer.data)
 
 
 @method_decorator(csrf_exempt, name='dispatch')
