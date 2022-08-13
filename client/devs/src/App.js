@@ -7,6 +7,7 @@ import axios from 'axios';
 import LandingPage from './components/landing/LandingPage';
 import LoginPage from './components/login/LoginPage';
 import SearchPage from './components/search/SearchPage';
+import SearchResultPage from './components/search/SearchResultPage';
 import ProfilePage3 from './components/profile/profile3/ProfilePage3';
 import MainPage from './components/main/MainPage';
 import ProfilePage from './components/profile/ProfilePage';
@@ -34,6 +35,9 @@ const App = () => {
 
         {/* Search Page */}
         <Route path="/search" element={<SearchPage />} />
+
+        {/*Search Result Page*/}
+        <Route path="/searchresult" element={<SearchResultPage />} />
 
         {/*Profile Page 3*/}
         {/* <Route path="/profile3" element={<ProfilePage3 />} /> */}
