@@ -25,6 +25,11 @@ class UserHashtagViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
+
 
 @method_decorator(csrf_exempt, name='dispatch')
 class UserImgViewSet(viewsets.ModelViewSet):
@@ -104,8 +109,11 @@ class UserCertViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
     def retrieve(self, request, *args, **kwargs):
-        serializer = self.get_serializer(self.get_queryset(), many=True)
-        return Response(data=serializer.data)
+        instances = UserCert.objects.filter(user_id=str(kwargs['user']))
+        response = []
+        for idx in range(len(instances)):
+            response.append(self.get_serializer(instances[idx]).data)
+        return Response(response)
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -118,8 +126,11 @@ class UserCareerViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
     def retrieve(self, request, *args, **kwargs):
-        serializer = self.get_serializer(self.get_queryset(), many=True)
-        return Response(data=serializer.data)
+        instances = UserCert.objects.filter(user_id=str(kwargs['user']))
+        response = []
+        for idx in range(len(instances)):
+            response.append(self.get_serializer(instances[idx]).data)
+        return Response(response)
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -131,12 +142,12 @@ class FollowViewSet(viewsets.ModelViewSet):
     # 현재 유저를 기준으로 count
     def count_following(self):
         filter = Follow.objects.filter(
-            following='cfb6b570a8a846f49c26d58d37aef48f')
+            following=self.request.user)
         return filter.count()
 
     def count_follower(self):
         filter = Follow.objects.filter(
-            follower='cfb6b570a8a846f49c26d58d37aef48f')
+            follower=self.request.user)
         return filter.count()
 
     def list(self, request, *args, **kwargs):
