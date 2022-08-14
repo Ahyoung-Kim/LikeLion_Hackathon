@@ -76,9 +76,10 @@ class UserSkillsPLViewSet(viewsets.ModelViewSet):
     queryset = UserSkillsDetails.objects.all()
     serializer_class = UserSkillsDetailsSerializer
     lookup_field = "user_id"
-
+    
     def perform_create(self, serializer):
-        serializer.save(skill_name=self.request.POST.get('skill_name'))
+        skill_name_id = self.request.POST.get('skill_name')
+        serializer.save(skill_name=UserSkills.objects.get(pk=skill_name_id))
 
     def retrieve(self, request, *args, **kwargs):
         instances = UserSkills.objects.filter(
@@ -106,7 +107,8 @@ class UserSkillsFLViewSet(viewsets.ModelViewSet):
     lookup_field = "user_id"
 
     def perform_create(self, serializer):
-        serializer.save(skill_name=self.request.POST.get('skill_name'))
+        skill_name_id = self.request.POST.get('skill_name')
+        serializer.save(skill_name=UserSkills.objects.get(pk=skill_name_id))
 
     def retrieve(self, request, *args, **kwargs):
         instances = UserSkills.objects.filter(
