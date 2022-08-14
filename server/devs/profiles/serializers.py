@@ -54,3 +54,8 @@ class FollowSerializer(serializers.ModelSerializer):
     class Meta:
         model = Follow
         fields = '__all__'
+
+class UserProjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProject
+        fields = '__all__'

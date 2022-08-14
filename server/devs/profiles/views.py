@@ -218,3 +218,15 @@ class FollowViewSet(viewsets.ModelViewSet):
 
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+@method_decorator(csrf_exempt, name='dispatch')
+class UserProjectViewSet(viewsets.ModelViewSet):
+    queryset = UserProject.objects.all()
+    serializer_class = UserProjectSerializer
+
+    def retrieve(self, request, *args, **kwargs):
+        instances = UserProject.objects.filter(user_id=str(kwargs['user']))
+        response = []
+        for idx in range(len(instances)):
+            response.append(self.get_serializer(instances[idx]).data)
+        return Response(response)

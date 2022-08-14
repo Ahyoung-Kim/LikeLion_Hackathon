@@ -13,5 +13,6 @@ router.register('skillsfl', views.UserSkillsFLViewSet)
 router.register('cert', views.UserCertViewSet)
 router.register('career', views.UserCareerViewSet)
 router.register('follow', views.FollowViewSet)
+router.register('project', views.UserProjectViewSet)
 
 urlpatterns = router.get_urls()
