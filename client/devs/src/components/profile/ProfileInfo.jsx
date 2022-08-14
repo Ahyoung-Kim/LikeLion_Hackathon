@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { 
   ProfileInfoDiv, ProfileFunctDiv,
 } from '../../styledComponents';
@@ -9,11 +9,30 @@ import ProfileTag from './ProfileTag';
 import ImgPopup from './popup/ImgPopup';
 import MyFanPopup from './popup/MyFanPopup';
 import MyIdolPopup from './popup/MyIdolPopup';
+import axios from 'axios';
+import { APIURL } from '../../config/key';
 
 const ProfileInfo = memo(() => {
   const [isImgUpdate, setIsImageUpdate] = useState(false);
   const [fan, setFan] = useState(false);
   const [idol, setIdol] = useState(false);
+  const [image, setImage] = useState();
+  const [hashtag, setHashtag] = useState();
+
+  const getImage = async() => {
+    const res = await axios.get(`${APIURL}/profiles/image/`)
+  }
+  const getHashTag = async() => {
+    const res = await axios.get(`${APIURL}/profiles/hashtag/`)
+
+    console.log('해시태그: ', res);
+    // res.data[0]
+    // hashtag: "웹프론트엔드 웹백엔드"
+  }
+
+  useEffect(() => {
+    getHashTag();
+  }, [])
 
   return (
   <>
