@@ -38,18 +38,6 @@ class UserSkillsDetailsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class UserStudySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserStudy
-        fields = '__all__'
-
-
-class UserStudyDetailsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserStudyDetails
-        fields = '__all__'
-
-
 class UserCertSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserCert
