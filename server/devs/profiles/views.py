@@ -60,6 +60,13 @@ class UserOngoingViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
+    def retrieve(self, request, *args, **kwargs):
+        instances = UserOngoing.objects.filter(user_id=str(kwargs['user']))
+        response = []
+        for idx in range(len(instances)):
+            response.append(self.get_serializer(instances[idx]).data)
+        return Response(response)
+
 
 @method_decorator(csrf_exempt, name='dispatch')
 class UserSkillsViewSet(viewsets.ModelViewSet):
@@ -69,6 +76,13 @@ class UserSkillsViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+    def retrieve(self, request, *args, **kwargs):
+        instances = UserSkills.objects.filter(user_id=str(kwargs['user']))
+        response = []
+        for idx in range(len(instances)):
+            response.append(self.get_serializer(instances[idx]).data)
+        return Response(response)
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -94,9 +108,6 @@ class UserSkillsPLViewSet(viewsets.ModelViewSet):
                     "skill_detail": serializer["skill_detail"],
                     "skill_name": instance.skill_name
                 })
-        # for idx in range(len(instances)):
-        #     response.append(self.get_serializer(instances[idx]).data)
-        print(response)
         return Response(response)
 
 
@@ -123,9 +134,6 @@ class UserSkillsFLViewSet(viewsets.ModelViewSet):
                     "skill_detail": serializer["skill_detail"],
                     "skill_name": instance.skill_name
                 })
-        # for idx in range(len(instances)):
-        #     response.append(self.get_serializer(instances[idx]).data)
-        print(response)
         return Response(response)
 
 
