@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { memo, useEffect, useState } from 'react';
+import { getCookie } from '../../config/cookie';
 import { APIURL } from '../../config/key';
 import { 
   BigBox,
@@ -10,6 +11,7 @@ import {
 import DescHead from './DescHead';
 
 const Details = memo(() => {
+  const id = getCookie('user_id');
   const [details, setDetails] = useState({
     belongs: '',
     introduction: '',
@@ -20,10 +22,10 @@ const Details = memo(() => {
   const { belongs, introduction, major, position, subposition } = details
 
   useEffect(() => {
-    axios.get(`${APIURL}/profiles/details/`)
+    axios.get(`${APIURL}/profiles/details/${id}/`)
     .then(res => {
       console.log('profile details: ', res.data);
-      setDetails(res.data[0]);
+      setDetails(res.data);
     })
     .catch(err => {
       console.log(err);

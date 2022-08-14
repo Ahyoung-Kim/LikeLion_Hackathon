@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { memo, useEffect, useState } from 'react';
+import { getCookie } from '../../config/cookie';
 import { APIURL } from '../../config/key';
 import { 
   CareerBox, CareerDiv, DescContentsDiv, 
@@ -9,12 +10,13 @@ import DescHead from './DescHead';
 import CareerPopup from './popup/CareerPopup';
 
 const Careers = memo(() => {
+  const id = getCookie('user_id')
   const [isAdd, setIsAdd] = useState(false);
 
   const [career, setCareer] = useState([]);
 
   useEffect(() => {
-    axios.get(`${APIURL}/profiles/career/`)
+    axios.get(`${APIURL}/profiles/career/${id}/`)
     .then(res => {
       console.log('career: ', res.data)
       setCareer(res.data)

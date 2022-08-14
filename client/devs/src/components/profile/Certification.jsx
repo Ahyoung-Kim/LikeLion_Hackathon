@@ -1,14 +1,16 @@
 import axios from 'axios';
 import React, { memo, useEffect, useState } from 'react';
+import { getCookie } from '../../config/cookie';
 import { APIURL } from '../../config/key';
 import { DescContentsDiv, DescDiv, LicenceBox, LicenceDiv } from '../../styledComponents';
 import DescHead from './DescHead';
 
 const Certification = memo(() => {
+  const id = getCookie('user_id')
   const [cert, setCert] = useState([])
 
   useEffect(() => {
-    axios.get(`${APIURL}/profiles/cert/`)
+    axios.get(`${APIURL}/profiles/cert/${id}/`)
     .then(res => {
       console.log('certification: ', res.data)
       setCert(res.data)

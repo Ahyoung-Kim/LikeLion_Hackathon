@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { memo, useEffect, useState } from 'react';
+import { getCookie } from '../../config/cookie';
 import { APIURL } from '../../config/key';
 import { 
   DescDiv, DescContentsDiv, CurrentStudy
@@ -8,13 +9,14 @@ import DescHead from './DescHead';
 
 
 const OnGoing = memo(() => {
+  const id = getCookie('user_id')
   const [onGoing, setOnGoing] = useState("");
 
   useEffect(() => {
-    axios.get(`${APIURL}/profiles/ongoing/`)
+    axios.get(`${APIURL}/profiles/ongoing/${id}/`)
     .then( res => {
       console.log('ongoing: ', res.data);
-      setOnGoing(res.data[0].ongoing)
+      setOnGoing(res.data.ongoing)
     })
     .catch(err => {
       console.log(err)

@@ -1,15 +1,17 @@
 import axios from 'axios';
 import React, { memo, useEffect, useState } from 'react';
+import { getCookie } from '../../config/cookie';
 import { APIURL } from '../../config/key';
 import { DescContentsDiv, DescDiv, SkillContents, SkillDiv, SkillHeadDiv, SkillSetDiv } from '../../styledComponents';
 import DescHead from './DescHead';
 
 const Skill = memo(() => {
+  const id = getCookie('user_id')
   const [lang, setLang] = useState([])
   const [frw, setFrw] = useState([]);
 
   useEffect(() => {
-    axios.get(`${APIURL}/profiles/skills/`)
+    axios.get(`${APIURL}/profiles/skills/${id}/`)
     .then(res => {
       console.log(res.data);
       const temp = res.data;
