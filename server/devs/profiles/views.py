@@ -25,6 +25,11 @@ class UserHashtagViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
+
 
 @method_decorator(csrf_exempt, name='dispatch')
 class UserImgViewSet(viewsets.ModelViewSet):
@@ -67,31 +72,59 @@ class UserSkillsViewSet(viewsets.ModelViewSet):
 
 
 @method_decorator(csrf_exempt, name='dispatch')
-class UserSkillsDetailsViewSet(viewsets.ModelViewSet):
+class UserSkillsPLViewSet(viewsets.ModelViewSet):
     queryset = UserSkillsDetails.objects.all()
     serializer_class = UserSkillsDetailsSerializer
+    lookup_field = "user_id"
 
     def perform_create(self, serializer):
         serializer.save(skill_name=self.request.POST.get('skill_name'))
 
+    def retrieve(self, request, *args, **kwargs):
+        instances = UserSkills.objects.filter(
+            user_id=str(kwargs['user_id']), skill_type="pl"
+        )
+        response = []
+        for instance in instances:
+            temp = UserSkillsDetails.objects.filter(skill_name=instance.id)
+            for idx in range(len(temp)):
+                serializer = self.get_serializer(temp[idx]).data
+                response.append({
+                    "skill_detail": serializer["skill_detail"],
+                    "skill_name": instance.skill_name
+                })
+        # for idx in range(len(instances)):
+        #     response.append(self.get_serializer(instances[idx]).data)
+        print(response)
+        return Response(response)
+
 
 @method_decorator(csrf_exempt, name='dispatch')
-class UserStudyViewSet(viewsets.ModelViewSet):
-    queryset = UserStudy.objects.all()
-    serializer_class = UserStudySerializer
-    lookup_field = "user"
+class UserSkillsFLViewSet(viewsets.ModelViewSet):
+    queryset = UserSkillsDetails.objects.all()
+    serializer_class = UserSkillsDetailsSerializer
+    lookup_field = "user_id"
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        serializer.save(skill_name=self.request.POST.get('skill_name'))
 
-
-@method_decorator(csrf_exempt, name='dispatch')
-class UserStudyDetailsViewSet(viewsets.ModelViewSet):
-    queryset = UserStudyDetails.objects.all()
-    serializer_class = UserStudyDetailsSerializer
-
-    def perform_create(self, serializer):
-        serializer.save(study_name=self.request.POST.get('study_name'))
+    def retrieve(self, request, *args, **kwargs):
+        instances = UserSkills.objects.filter(
+            user_id=str(kwargs['user_id']), skill_type="fl"
+        )
+        response = []
+        for instance in instances:
+            temp = UserSkillsDetails.objects.filter(skill_name=instance.id)
+            for idx in range(len(temp)):
+                serializer = self.get_serializer(temp[idx]).data
+                response.append({
+                    "skill_detail": serializer["skill_detail"],
+                    "skill_name": instance.skill_name
+                })
+        # for idx in range(len(instances)):
+        #     response.append(self.get_serializer(instances[idx]).data)
+        print(response)
+        return Response(response)
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -104,8 +137,11 @@ class UserCertViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
     def retrieve(self, request, *args, **kwargs):
-        serializer = self.get_serializer(self.get_queryset(), many=True)
-        return Response(data=serializer.data)
+        instances = UserCert.objects.filter(user_id=str(kwargs['user']))
+        response = []
+        for idx in range(len(instances)):
+            response.append(self.get_serializer(instances[idx]).data)
+        return Response(response)
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -118,8 +154,11 @@ class UserCareerViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
     def retrieve(self, request, *args, **kwargs):
-        serializer = self.get_serializer(self.get_queryset(), many=True)
-        return Response(data=serializer.data)
+        instances = UserCert.objects.filter(user_id=str(kwargs['user']))
+        response = []
+        for idx in range(len(instances)):
+            response.append(self.get_serializer(instances[idx]).data)
+        return Response(response)
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -131,12 +170,12 @@ class FollowViewSet(viewsets.ModelViewSet):
     # 현재 유저를 기준으로 count
     def count_following(self):
         filter = Follow.objects.filter(
-            following='cfb6b570a8a846f49c26d58d37aef48f')
+            following=self.request.user)
         return filter.count()
 
     def count_follower(self):
         filter = Follow.objects.filter(
-            follower='cfb6b570a8a846f49c26d58d37aef48f')
+            follower=self.request.user)
         return filter.count()
 
     def list(self, request, *args, **kwargs):
