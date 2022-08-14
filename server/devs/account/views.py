@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import status
+from rest_framework import status, viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView, GenericAPIView
@@ -7,7 +7,7 @@ from rest_framework.permissions import AllowAny
 
 from django.http import Http404
 
-from .serializers import UserSerializer, UserLoginSerializer
+from .serializers import UserSerializer, UserLoginSerializer, UserInfoSerializer
 from .models import User
 
 from django.utils.decorators import method_decorator
@@ -78,3 +78,10 @@ class UserLoginView(GenericAPIView):
             }
 
         return Response(response, status=status.HTTP_200_OK)
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class UserInfoViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserInfoSerializer
+    lookup_field = "id"
