@@ -311,6 +311,7 @@ cursor: pointer;
 `
 // --------------------------------------
 export const ProfileFunctDiv = styled.div`
+// background-color: orange;
 width: calc(100% - 150px);
 display: flex;
 flex-wrap: wrap;
@@ -321,6 +322,7 @@ align-items: center;
 // -----------
 export const ProfileTextDiv = styled.div`
 // background-color: aqua;
+width: calc(100% - 374px);
 height: max-content;
 margin-left: 30px;
 `
@@ -343,6 +345,7 @@ line-height: 22px;
 `
 // ----------
 export const FollowDiv = styled.div`
+// background-color: white;
 width: max-content;
 height: max-content;
 display: flex;

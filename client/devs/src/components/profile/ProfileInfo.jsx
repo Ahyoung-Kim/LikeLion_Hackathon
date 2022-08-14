@@ -11,27 +11,32 @@ import MyFanPopup from './popup/MyFanPopup';
 import MyIdolPopup from './popup/MyIdolPopup';
 import axios from 'axios';
 import { APIURL } from '../../config/key';
+import { getCookie } from '../../config/cookie';
 
 const ProfileInfo = memo(() => {
+  const id = getCookie('user_id');
   const [isImgUpdate, setIsImageUpdate] = useState(false);
   const [fan, setFan] = useState(false);
   const [idol, setIdol] = useState(false);
   const [image, setImage] = useState();
-  const [hashtag, setHashtag] = useState();
+  const [hashtag, setHashtag] = useState([]);
 
   const getImage = async() => {
     const res = await axios.get(`${APIURL}/profiles/image/`)
   }
   const getHashTag = async() => {
-    const res = await axios.get(`${APIURL}/profiles/hashtag/`)
+    const res = await axios.get(`${APIURL}/profiles/hashtag/${id}/`)
 
     console.log('해시태그: ', res);
+    const temp = res.data.hashtag.split(' ');
+    console.log('hashtag temp ', temp);
+    setHashtag(temp);
     // res.data[0]
     // hashtag: "웹프론트엔드 웹백엔드"
   }
 
   useEffect(() => {
-    getHashTag();
+    getHashTag().catch(err => console.log(err))
   }, [])
 
   return (
@@ -51,12 +56,11 @@ const ProfileInfo = memo(() => {
       <ProfileImage setPopup={setIsImageUpdate} />
 
       <ProfileFunctDiv>
-
         <ProfileText />
 
         <ProfileFollow setFan={setFan} setIdol={setIdol} />
 
-        <ProfileTag />
+        <ProfileTag data={hashtag} />
 
       </ProfileFunctDiv>
       

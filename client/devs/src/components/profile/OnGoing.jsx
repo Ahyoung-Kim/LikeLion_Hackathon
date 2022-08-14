@@ -16,7 +16,7 @@ const OnGoing = memo(() => {
     axios.get(`${APIURL}/profiles/ongoing/${id}/`)
     .then( res => {
       console.log('ongoing: ', res.data);
-      setOnGoing(res.data.ongoing)
+      setOnGoing(res.data[0].ongoing)
     })
     .catch(err => {
       console.log(err)
