@@ -10,10 +10,12 @@ from django.http import Http404
 from .serializers import UserSerializer, UserLoginSerializer
 from .models import User
 
+from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class Test(APIView):
     def get(self, req):
         users = User.objects.all()
@@ -31,6 +33,7 @@ class Test(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class UserView(CreateAPIView):
     serializer_class = UserSerializer
     permission_classes = (AllowAny,)
@@ -52,6 +55,7 @@ class UserView(CreateAPIView):
         return Response(response, status=status_code)
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class UserLoginView(GenericAPIView):
     permission_classes = (AllowAny,)
     serializer_class = UserLoginSerializer

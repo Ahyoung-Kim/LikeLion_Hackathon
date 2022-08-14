@@ -172,3 +172,56 @@
     bottom: -20px;
 }
 
+
+.search-result-card{
+    margin: 0 auto;
+    width: 1000px;
+    height: 134px;
+    background-color: rgba(255, 224, 130, 0.2);
+    border-radius: 10px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.search-result-img{
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+}
+
+.search-result-detail{
+    gap: 8px;
+}
+
+.search-result-user{
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.search-result-position{
+    font-size: 24px;
+}
+
+.search-result-job{
+    font-size: 24px;
+}
+
+.search-result-school{
+    font-size: 24px;
+}
+
+.search-result-introduction-box{
+    width: 400px;
+    height: 100px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.search-result-button{
+    font-size: 24px;
+    width: 150px;
+    height: 57px;
+    background-color: #B299B0;
+    border: none;
+    border-radius: 7px;
+}

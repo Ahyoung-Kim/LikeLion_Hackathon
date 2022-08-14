@@ -5,7 +5,8 @@ from django.conf import settings
 class UserHashtag(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE)
+        on_delete=models.CASCADE,
+    )
     hashtag = models.CharField(max_length=100, null=True)  # 해시태그
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -17,7 +18,8 @@ class UserHashtag(models.Model):
 class UserImg(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE)
+        on_delete=models.CASCADE,
+    )
     image = models.ImageField(
         default='media/profile-img.png',
         upload_to="uploads")
@@ -29,12 +31,13 @@ class UserImg(models.Model):
 class UserDetails(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE)
+        on_delete=models.CASCADE,
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    belongs = models.CharField(max_length=30)  # 학교/직업
-    major = models.CharField(max_length=30)  # 전공
-    position = models.CharField(max_length=30)  # 메인포지션
+    belongs = models.CharField(max_length=30, null=True)  # 학교/직업
+    major = models.CharField(max_length=30, null=True)  # 전공
+    position = models.CharField(max_length=30, null=True)  # 메인포지션
     subposition = models.CharField(max_length=30, null=True)  # 서브포지션
     introduction = models.CharField(max_length=200, null=True)  # 자기소개
 
@@ -45,7 +48,8 @@ class UserDetails(models.Model):
 class UserOngoing(models.Model):  # 현재 진행 중
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE)
+        on_delete=models.CASCADE,
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     ongoing = models.TextField()
@@ -85,7 +89,7 @@ class UserStudy(models.Model):  # 개인공부
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name="study"
+        related_name="study",
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -115,7 +119,6 @@ class UserCert(models.Model):  # 자격증
         on_delete=models.CASCADE,
         related_name="cert",
         db_column='user_cert'
-
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -126,7 +129,6 @@ class UserCert(models.Model):  # 자격증
 
 
 class UserCareer(models.Model):
-    id = models.BigAutoField(primary_key=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
