@@ -134,3 +134,16 @@ class Follow(models.Model):
 
     class Meta:
         db_table = 'follow'
+
+class UserProject(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="project",
+        db_column='user_project'
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    position = models.CharField(max_length=30)
+    skills = models.CharField(max_length=30)
+    withs = models.CharField(null=True, max_length=200)
