@@ -164,7 +164,7 @@ class UserCareerViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
     def retrieve(self, request, *args, **kwargs):
-        instances = UserCert.objects.filter(user_id=str(kwargs['user']))
+        instances = UserCareer.objects.filter(user_id=str(kwargs['user']))
         response = []
         for idx in range(len(instances)):
             response.append(self.get_serializer(instances[idx]).data)
