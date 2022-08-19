@@ -53,7 +53,14 @@ const LoginInput = () => {
     console.log(res);
     if(res.data.success === 'true'){
       console.log('login success')
+      console.log('res::::', res.data)
       setCookie('user_id', res.data.id, {maxAge: 3000, path: '/'})
+      if(res.data.img === ''){
+        setCookie('user_img', 'http://127.0.0.1:8000/media/uploads/profile-img.jpg', {maxAge: 3000, path: '/'})
+      }
+      else{
+        setCookie('user_img', res.data.img, {maxAge: 3000, path: '/'})
+      }
       navigate('/main')
     } else {
       console.log('login fail')

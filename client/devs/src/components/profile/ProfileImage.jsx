@@ -8,7 +8,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { getCookie } from '../../config/cookie';
+import { getCookie, setCookie } from '../../config/cookie';
 
 const ProfileImage = ({ setPopup }) => {
   const navigate = useNavigate();
@@ -38,7 +38,6 @@ const ProfileImage = ({ setPopup }) => {
   return (
     <>
       <ProfileImgDiv>
-        <ProfileImg src={require('../../static/likelion.jpg')} />
         <ProfileImg src={userImg} />
         {/* <ProfileImg src={require('../../../../../server/devs/media/uploads/doggo_gu2Q8lP.jpg')} /> */}
         
