@@ -287,7 +287,8 @@ export const ProfileImg = styled.img`
 display: inline-block;
 border-radius: 50%;
 background-color: white;
-width: 100%;
+width: 120px;
+height: 120px;
 object-fit: contain;
 `
 
@@ -614,6 +615,7 @@ export const Image = styled.img`
 width: 100%;
 height: 100%;
 object-fit: contain;
+background-color: white;
 `
 
 export const ImageUploadBtn = styled.div`

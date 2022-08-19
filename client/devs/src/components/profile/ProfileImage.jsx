@@ -8,7 +8,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { getCookie } from '../../config/cookie';
+import { getCookie, setCookie } from '../../config/cookie';
 
 const ProfileImage = ({ setPopup }) => {
   const navigate = useNavigate();
@@ -18,29 +18,26 @@ const ProfileImage = ({ setPopup }) => {
     setPopup(true);
   }
 
-  const [userImg, setUserImg] = useState("../../static/likelion.jpg");
+  const [userImg, setUserImg] = useState('');
   const user_id = getCookie('user_id')
-  console.log("user_id::::", user_id)
 
   useEffect(() => {
     axios.get(`${APIURL}/profiles/image/${user_id}/`)
     .then(res => {
-      console.log('data:::: ', res.data);
       setUserImg(res.data.image)
     })
     .catch(err => {
+      console.log('img fetch error')
+      setUserImg(`${APIURL}/media/uploads/profile-img.png`)
       console.log(err);
     })
   }, [])
 
-  console.log('img:::: ', userImg);
 
   return (
     <>
       <ProfileImgDiv>
-        <ProfileImg src={require('../../static/likelion.jpg')} />
         <ProfileImg src={userImg} />
-        {/* <ProfileImg src={require('../../../../../server/devs/media/uploads/doggo_gu2Q8lP.jpg')} /> */}
         
         <ProfileImgEditBtn>
           <FontAwesomeIcon onClick={onClick} icon={faPen} />

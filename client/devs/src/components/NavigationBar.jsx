@@ -97,7 +97,8 @@ const NavigationBar = () => {
 
             <img
               className="profile-pic"
-              src={require("./search/profile-img.png")}
+              // src={require("./search/profile-img.png")}
+              src={getCookie('user_img')}
               onClick={goProfile}
             />
 

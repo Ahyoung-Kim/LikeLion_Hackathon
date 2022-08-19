@@ -1,4 +1,7 @@
-import React, { memo, useState } from 'react';
+import axios from 'axios';
+import React, { memo, useState,useEffect } from 'react';
+import { getCookie, setCookie } from '../../../config/cookie';
+import { APIURL } from '../../../config/key';
 import { 
   PopupBox, PopupDiv,
   ImageUploadBtn, ImageBox,
@@ -8,7 +11,15 @@ import {
 import PopupHeader from './PopupHeader';
 
 const ImgPopup = memo(({ setPopup }) => {
-  const [src, setSrc] = useState();
+  const [src, setSrc] = useState(getCookie('user_img'));
+
+  useEffect(() =>{
+    axios.get(`${APIURL}/profiles/image/${getCookie('user_id')}/`)
+    .then(
+    res => {
+      setCookie('user_img', res.data.image, {maxAge: 3000, path: '/'})
+    }
+  )}, [])
 
   const onSelectFile = (e) => {
     if(e.target.files && e.target.files.length > 0){
@@ -19,6 +30,13 @@ const ImgPopup = memo(({ setPopup }) => {
         setSrc(reader.result)
       })
     }
+  }
+
+  const sendImg = async() => {
+    const res = await axios.post(`${APIURL}/profiles/image/${getCookie('user_id')}`,{
+      image : src,
+      user : getCookie('user_id')
+    })
   }
 
   return (
@@ -39,7 +57,7 @@ const ImgPopup = memo(({ setPopup }) => {
             <ImageInput type="file" onChange={onSelectFile} />
           </ImageInputDiv>
             
-          <PopupSaveBtn>
+          <PopupSaveBtn onClick={sendImg}>
             저장하기
           </PopupSaveBtn>
         </PopupBox>
