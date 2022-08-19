@@ -172,9 +172,10 @@ class UserCareerViewSet(viewsets.ModelViewSet):
 
 
 @method_decorator(csrf_exempt, name='dispatch')
-class FollowViewSet(viewsets.ModelViewSet):
+class FollowerViewSet(viewsets.ModelViewSet):
     queryset = Follow.objects.all()
     serializer_class = FollowSerializer
+    lookup_field = "user"
 
     # TODO
     # 현재 유저를 기준으로 count
@@ -204,13 +205,33 @@ class FollowViewSet(viewsets.ModelViewSet):
         }
         return Response(response)
 
+    def retrieve(self, request, *args, **kwargs):
+        instances = Follow.objects.filter(follwing=str(kwargs['user']))
+        response = []
+        for idx in range(len(instances)):
+            response.append(self.get_serializer(instances[idx]).data)
+        return Response(response)
+
+@method_decorator(csrf_exempt, name='dispatch')
+class FollowingViewSet(viewsets.ModelViewSet):
+    queryset = Follow.objects.all()
+    serializer_class = FollowSerializer
+    lookup_field = "user"
+
+    def retrieve(self, request, *args, **kwargs):
+        instances = Follow.objects.filter(follower=str(kwargs['user']))
+        response = []
+        for idx in range(len(instances)):
+            response.append(self.get_serializer(instances[idx]).data)
+        return Response(response)
+        
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-
+       
         try:  # unfollow
             instance = self.queryset.get(
-                following=serializer.validated_data['following'], follower=serializer.validated_data['follower'])
+                following=serializer.data['following'], follower=self.request.user.id)            
             self.perform_destroy(instance)
 
         except:  # follow

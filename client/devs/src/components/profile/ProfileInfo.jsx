@@ -20,6 +20,7 @@ const ProfileInfo = memo(() => {
   const [idol, setIdol] = useState(false);
   const [hashtag, setHashtag] = useState([]);
 
+  
   const getHashTag = async() => {
     const res = await axios.get(`${APIURL}/profiles/hashtag/${id}/`)
 
