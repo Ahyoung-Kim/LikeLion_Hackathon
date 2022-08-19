@@ -7,7 +7,7 @@ import {
 } from '../../styledComponents';
 import axios from 'axios'
 import { APIURL } from '../../config/key';
-import { setCookie } from '../../config/cookie';
+import { getCookie, setCookie } from '../../config/cookie';
 import { useNavigate } from 'react-router-dom';
 
 const LoginInput = () => {
@@ -56,7 +56,7 @@ const LoginInput = () => {
       console.log('res::::', res.data)
       setCookie('user_id', res.data.id, {maxAge: 3000, path: '/'})
       if(res.data.img === ''){
-        setCookie('user_img', 'http://127.0.0.1:8000/media/uploads/profile-img.jpg', {maxAge: 3000, path: '/'})
+        setCookie('user_img', `${APIURL}/media/uploads/profile-img.png`, {maxAge: 3000, path: '/'})
       }
       else{
         setCookie('user_img', res.data.img, {maxAge: 3000, path: '/'})

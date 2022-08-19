@@ -48,10 +48,12 @@ const NavigationBar = () => {
         removeCookie(keys[i]);
       }
     }
+    
 
     setTimeout(() => {
-      window.location.replace('/main')
+      window.location.replace('/login')
     }, 500);
+    
   }
 
   if (location === "/" || location === "/login") {
@@ -81,7 +83,7 @@ const NavigationBar = () => {
           </div>
         </div>
         
-        
+      
         {/* <div style={{display:'flex', width:'350px', justifyContent:'space-between', alignItems: 'center'}}>
           <input className='nav-searchbar' type='text' placeholder="Search"></input>
           <Button variant="outline-success">
@@ -97,7 +99,8 @@ const NavigationBar = () => {
 
             <img
               className="profile-pic"
-              src={require("./search/profile-img.png")}
+              // src={require("./search/profile-img.png")}
+              src={getCookie('user_img')}
               onClick={goProfile}
             />
 
