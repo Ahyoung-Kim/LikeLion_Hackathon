@@ -48,10 +48,12 @@ const NavigationBar = () => {
         removeCookie(keys[i]);
       }
     }
+    
 
     setTimeout(() => {
       window.location.replace('/main')
     }, 500);
+    
   }
 
   if (location === "/" || location === "/login") {
@@ -81,7 +83,7 @@ const NavigationBar = () => {
           </div>
         </div>
         
-        
+      
         {/* <div style={{display:'flex', width:'350px', justifyContent:'space-between', alignItems: 'center'}}>
           <input className='nav-searchbar' type='text' placeholder="Search"></input>
           <Button variant="outline-success">
