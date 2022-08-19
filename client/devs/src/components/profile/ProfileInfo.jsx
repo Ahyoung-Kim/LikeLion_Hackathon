@@ -18,12 +18,8 @@ const ProfileInfo = memo(() => {
   const [isImgUpdate, setIsImageUpdate] = useState(false);
   const [fan, setFan] = useState(false);
   const [idol, setIdol] = useState(false);
-  const [image, setImage] = useState();
   const [hashtag, setHashtag] = useState([]);
 
-  const getImage = async() => {
-    const res = await axios.get(`${APIURL}/profiles/image/`)
-  }
   const getHashTag = async() => {
     const res = await axios.get(`${APIURL}/profiles/hashtag/${id}/`)
 
