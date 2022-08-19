@@ -20,7 +20,7 @@ const ProfileText = memo(() => {
     axios.get(`${APIURL}/account/userinfo/${id}/`)
     .then(res => {
       console.log(res.data);
-
+      setNickname(res.data.nickname)
     })
     .catch(err => {
       console.log(err)
@@ -30,7 +30,7 @@ const ProfileText = memo(() => {
     <>
       <ProfileTextDiv>
         <ProfileName>
-          아영
+          {nickname}
           <ProfileEditBtn>
             <FontAwesomeIcon icon={faGear} />
           </ProfileEditBtn>
