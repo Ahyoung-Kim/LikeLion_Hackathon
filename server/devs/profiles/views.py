@@ -1,3 +1,4 @@
+import imp
 from logging import exception
 from urllib import response
 from .serializers import *
@@ -15,6 +16,8 @@ from rest_framework import status
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
+from account.models import User
+
 
 @method_decorator(csrf_exempt, name='dispatch')
 class UserHashtagViewSet(viewsets.ModelViewSet):
@@ -22,8 +25,8 @@ class UserHashtagViewSet(viewsets.ModelViewSet):
     serializer_class = UserHashtagSerializer
     lookup_field = "user"
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -177,40 +180,20 @@ class FollowerViewSet(viewsets.ModelViewSet):
     serializer_class = FollowSerializer
     lookup_field = "user"
 
-    # TODO
-    # 현재 유저를 기준으로 count
-    def count_following(self):
-        filter = Follow.objects.filter(
-            following=self.request.user)
-        return filter.count()
-
-    def count_follower(self):
-        filter = Follow.objects.filter(
-            follower=self.request.user)
-        return filter.count()
-
-    def list(self, request, *args, **kwargs):
-        queryset = self.filter_queryset(self.get_queryset())
-
-        page = self.paginate_queryset(queryset)
-        if page is not None:
-            serializer = self.get_serializer(page, many=True)
-            return self.get_paginated_response(serializer.data)
-
-        serializer = self.get_serializer(queryset, many=True)
-        response = {
-            "data": serializer.data,
-            "following": self.count_following(),
-            "follower": self.count_follower()
-        }
-        return Response(response)
-
     def retrieve(self, request, *args, **kwargs):
-        print(kwargs['user'])
         instances = Follow.objects.filter(following_id=str(kwargs['user']))
         response = []
         for idx in range(len(instances)):
-            response.append(self.get_serializer(instances[idx]).data)
+            id = self.get_serializer(instances[idx]).data.get('follower')
+            name = User.objects.get(id=id).name
+            try:
+                img = str(UserImg.objects.get(user_id=id).image)
+            except:
+                img = ""
+
+            response.append(
+                {"id": str(id), "name": name, "img": img,}
+            )
         return Response(response)
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -223,7 +206,16 @@ class FollowingViewSet(viewsets.ModelViewSet):
         instances = Follow.objects.filter(follower_id=str(kwargs['user']))
         response = []
         for idx in range(len(instances)):
-            response.append(self.get_serializer(instances[idx]).data)
+            id = self.get_serializer(instances[idx]).data.get('following')
+            name = User.objects.get(id=id).name
+            try:
+                img = str(UserImg.objects.get(user_id=id).image)
+            except:
+                img = ""
+
+            response.append(
+                {"id": str(id), "name": name, "img": img,}
+            )
         return Response(response)
         
     def create(self, request, *args, **kwargs):
