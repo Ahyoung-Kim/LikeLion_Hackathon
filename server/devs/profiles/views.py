@@ -206,7 +206,8 @@ class FollowerViewSet(viewsets.ModelViewSet):
         return Response(response)
 
     def retrieve(self, request, *args, **kwargs):
-        instances = Follow.objects.filter(follwing=str(kwargs['user']))
+        print(kwargs['user'])
+        instances = Follow.objects.filter(following_id=str(kwargs['user']))
         response = []
         for idx in range(len(instances)):
             response.append(self.get_serializer(instances[idx]).data)
@@ -219,7 +220,7 @@ class FollowingViewSet(viewsets.ModelViewSet):
     lookup_field = "user"
 
     def retrieve(self, request, *args, **kwargs):
-        instances = Follow.objects.filter(follower=str(kwargs['user']))
+        instances = Follow.objects.filter(follower_id=str(kwargs['user']))
         response = []
         for idx in range(len(instances)):
             response.append(self.get_serializer(instances[idx]).data)
