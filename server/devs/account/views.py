@@ -1,3 +1,4 @@
+from gc import get_objects
 from django.shortcuts import render
 from rest_framework import status, viewsets
 from rest_framework.views import APIView
@@ -9,6 +10,7 @@ from django.http import Http404
 
 from .serializers import UserSerializer, UserLoginSerializer, UserInfoSerializer
 from .models import User
+from profiles.models import UserImg
 
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
@@ -71,10 +73,15 @@ class UserLoginView(GenericAPIView):
                 "id": "",
             }
         else:
+            try:
+                img = UserImg.objects.get(user_id=user.id).image
+            except:
+                img = ""
             response = {
                 "success": "true",
                 "status_code": status.HTTP_200_OK,
                 "id": user.id,
+                "img": str(img),
             }
 
         return Response(response, status=status.HTTP_200_OK)
