@@ -37,8 +37,8 @@ class UserImgViewSet(viewsets.ModelViewSet):
     serializer_class = UserImgSerializer
     lookup_field = "user"
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -47,8 +47,8 @@ class UserDetailsViewSet(viewsets.ModelViewSet):
     serializer_class = UserDetailsSerializer
     lookup_field = "user"
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -57,8 +57,8 @@ class UserOngoingViewSet(viewsets.ModelViewSet):
     serializer_class = UserOngoingSerializer
     lookup_field = "user"
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
     def retrieve(self, request, *args, **kwargs):
         instances = UserOngoing.objects.filter(user_id=str(kwargs['user']))
@@ -74,8 +74,8 @@ class UserSkillsViewSet(viewsets.ModelViewSet):
     serializer_class = UserSkillsSerializer
     lookup_field = "user"
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
     def retrieve(self, request, *args, **kwargs):
         instances = UserSkills.objects.filter(user_id=str(kwargs['user']))
@@ -91,9 +91,9 @@ class UserSkillsPLViewSet(viewsets.ModelViewSet):
     serializer_class = UserSkillsDetailsSerializer
     lookup_field = "user_id"
     
-    def perform_create(self, serializer):
-        skill_name_id = self.request.POST.get('skill_name')
-        serializer.save(skill_name=UserSkills.objects.get(pk=skill_name_id))
+    # def perform_create(self, serializer):
+    #     skill_name_id = self.request.POST.get('skill_name')
+    #     serializer.save(skill_name=UserSkills.objects.get(pk=skill_name_id))
 
     def retrieve(self, request, *args, **kwargs):
         instances = UserSkills.objects.filter(
@@ -117,9 +117,9 @@ class UserSkillsFLViewSet(viewsets.ModelViewSet):
     serializer_class = UserSkillsDetailsSerializer
     lookup_field = "user_id"
 
-    def perform_create(self, serializer):
-        skill_name_id = self.request.POST.get('skill_name')
-        serializer.save(skill_name=UserSkills.objects.get(pk=skill_name_id))
+    # def perform_create(self, serializer):
+    #     skill_name_id = self.request.POST.get('skill_name')
+    #     serializer.save(skill_name=UserSkills.objects.get(pk=skill_name_id))
 
     def retrieve(self, request, *args, **kwargs):
         instances = UserSkills.objects.filter(
@@ -143,8 +143,8 @@ class UserCertViewSet(viewsets.ModelViewSet):
     serializer_class = UserCertSerializer
     lookup_field = "user"
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
     def retrieve(self, request, *args, **kwargs):
         instances = UserCert.objects.filter(user_id=str(kwargs['user']))
@@ -160,8 +160,8 @@ class UserCareerViewSet(viewsets.ModelViewSet):
     serializer_class = UserCareerSerializer
     lookup_field = "user"
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
     def retrieve(self, request, *args, **kwargs):
         instances = UserCareer.objects.filter(user_id=str(kwargs['user']))
