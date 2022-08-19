@@ -51,7 +51,7 @@ const NavigationBar = () => {
     
 
     setTimeout(() => {
-      window.location.replace('/main')
+      window.location.replace('/login')
     }, 500);
     
   }
