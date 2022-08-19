@@ -410,7 +410,23 @@ export const DescDiv = styled.div`
 width: 100%;
 /* background-color: orange; */
 margin: 40px 0;
+position: relative;
 `
+
+export const SaveBtn = styled.div`
+background-color: #FFB300;
+width: 60px;
+line-height: 30px;
+color: white;
+text-align: center;
+border-radius: 7px;
+cursor: pointer;
+
+position: absolute;
+top: 0;
+right: 70px;
+`
+
 export const DescHeadDiv = styled.div`
 display: flex;
 justify-content: space-between;
@@ -469,6 +485,15 @@ background-color: #F4F4F4;
 border-radius: 5px;
 padding: 0 10px;
 `
+export const SmallInput = styled.input`
+width: calc((923px / 2) - 120px);
+line-height: 35px;
+background-color: #FFE5B2;
+border: none;
+border-radius: 5px;
+padding: 0 10px;
+`
+
 export const BigDiv = styled.div`
 width: 100%;
 /* background-color: aqua; */
@@ -485,12 +510,30 @@ border-radius: 5px;
 padding: 0 10px;
 margin: 0 auto;
 `
+
+export const BigInput = styled.textarea`
+width: calc(923px - 120px);
+height: 100px;
+max-height: 100px;
+background-color: #FFE5B2;
+border: none;
+border-radius: 5px;
+padding: 10px 10px;
+margin: 0 auto;
+`
 // -----------------------------------------
 export const CurrentStudy = styled.div`
 background-color: #F4F4F4;
 max-width: 100%;
 padding: 30px;
 border-radius: 5px;
+`
+export const CurrentInput = styled.input`
+background-color: #FFE5B2;
+width: 100%;
+border: none;
+border-radius: 5px;
+padding: 30px;
 `
 
 export const SkillSetDiv = styled.div`
