@@ -12,14 +12,19 @@ import MyIdolPopup from './popup/MyIdolPopup';
 import axios from 'axios';
 import { APIURL } from '../../config/key';
 import { getCookie } from '../../config/cookie';
+import { useParams } from 'react-router-dom';
 
 const ProfileInfo = memo(() => {
-  const id = getCookie('user_id');
+  //const id = getCookie('user_id');
+  const params = useParams();
+  const id = params.user_id;
   const [isImgUpdate, setIsImageUpdate] = useState(false);
   const [fan, setFan] = useState(false);
   const [idol, setIdol] = useState(false);
   const [hashtag, setHashtag] = useState([]);
 
+  const [followers, setFollowers] = useState([]);
+  const [followings, setFollowings] = useState([]);
   
   const getHashTag = async() => {
     const res = await axios.get(`${APIURL}/profiles/hashtag/${id}/`)
@@ -34,6 +39,27 @@ const ProfileInfo = memo(() => {
 
   useEffect(() => {
     getHashTag().catch(err => console.log(err))
+
+    axios.get(`${APIURL}/profiles/follower/${id}/`)
+    .then(res => {
+      console.log(res)
+      // res.data : [{id, follower, following}]
+      const temp = res.data;
+      const tmp1 = [];
+      const tmp2 = [];
+
+      for(let i = 0; i < temp.length; i++){
+        const data = temp[i];
+        tmp1.push(data.follower);
+        tmp2.push(data.following)
+      }
+
+      setFollowers(tmp1);
+      setFollowings(tmp2);
+    })
+    .catch(err => {
+      console.log(err);
+    })
   }, [])
 
   return (
@@ -42,10 +68,10 @@ const ProfileInfo = memo(() => {
       <ImgPopup setPopup={setIsImageUpdate} />
     )}
     {fan && (
-      <MyFanPopup setPopup={setFan} />
+      <MyFanPopup setPopup={setFan} followers={followers} />
     )}
     {idol && (
-      <MyIdolPopup setPopup={setIdol} />
+      <MyIdolPopup setPopup={setIdol} followings={followings} />
     )}
 
     <ProfileInfoDiv>
