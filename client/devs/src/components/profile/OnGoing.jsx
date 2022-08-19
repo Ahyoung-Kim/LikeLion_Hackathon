@@ -18,6 +18,7 @@ const OnGoing = memo(() => {
   const [isEdit, setIsEdit] = useState(false);
   const [onGoing, setOnGoing] = useState("");
   const onRef = useRef();
+  const [isInit, setIsInit] = useState(false);
 
   useEffect(() => {
     axios.get(`${APIURL}/profiles/ongoing/${id}/`)
@@ -27,6 +28,7 @@ const OnGoing = memo(() => {
     })
     .catch(err => {
       console.log(err)
+      setIsInit(true);
     })
   }, []);
 
@@ -36,10 +38,35 @@ const OnGoing = memo(() => {
     }
   }, [isEdit])
 
+  const ongoingPost = () => {
+    setIsEdit(false)
+
+    if(isInit){
+      axios.post(`${APIURL}/profiles/ongoing/`, {
+        user: id, 
+        ongoing: onGoing
+      })
+      .then(res => {
+        console.log('ongoing post success')
+      })
+      .catch(err => console.log(err))
+    } else {
+      axios.patch(`${APIURL}/profiles/ongoing/${id}/`, {
+        ongoing: onGoing
+      })
+      .then(res => {
+        console.log('ongoing patch success');
+      })
+      .catch(err => console.log(err))
+    }
+
+    window.location.replace('');
+  }
+
   return (
     <DescDiv>
       {isEdit && (
-        <SaveBtn onClick={() => {setIsEdit(false)}}>
+        <SaveBtn onClick={ongoingPost}>
           저장
         </SaveBtn>
       )}
