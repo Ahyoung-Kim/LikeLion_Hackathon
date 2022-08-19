@@ -287,7 +287,8 @@ export const ProfileImg = styled.img`
 display: inline-block;
 border-radius: 50%;
 background-color: white;
-width: 100%;
+width: 120px;
+height: 120px;
 object-fit: contain;
 `
 

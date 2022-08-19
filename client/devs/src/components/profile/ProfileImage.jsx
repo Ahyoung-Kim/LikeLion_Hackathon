@@ -38,7 +38,6 @@ const ProfileImage = ({ setPopup }) => {
   return (
     <>
       <ProfileImgDiv>
-        <ProfileImg src={require('../../static/likelion.jpg')} />
         <ProfileImg src={userImg} />
         {/* <ProfileImg src={require('../../../../../server/devs/media/uploads/doggo_gu2Q8lP.jpg')} /> */}
         
