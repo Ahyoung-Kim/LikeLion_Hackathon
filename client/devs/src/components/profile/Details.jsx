@@ -18,6 +18,7 @@ const Details = memo(() => {
   const [isEdit, setIsEdit] = useState(false);
   const params = useParams();
   const id = params.user_id;
+  const [isInit, setIsInit] = useState(false);
 
   const [details, setDetails] = useState({
     belongs: '',
@@ -42,6 +43,7 @@ const Details = memo(() => {
     })
     .catch(err => {
       console.log(err);
+      setIsInit(true)
     })
   }, [])
 
@@ -62,15 +64,29 @@ const Details = memo(() => {
 
   const onDetailsPost = () => {
     setIsEdit(false)
-    axios.post(`${APIURL}/profiles/details/`, {
-      user: id, 
-      belongs, major, position, subposition,
-      introduction
-    })
-    .then(res => {
-      console.log('detail post success')
-    })
-    .catch(err => console.log(err))
+
+    if(isInit){
+      axios.post(`${APIURL}/profiles/details/`, {
+        user: id, 
+        belongs, major, position, subposition,
+        introduction
+      })
+      .then(res => {
+        console.log('detail post success')
+      })
+      .catch(err => console.log(err))
+    } else {
+      axios.patch(`${APIURL}/profiles/details/${id}/`, {
+        belongs, major, position, subposition,
+        introduction
+      })
+      .then(res => {
+        console.log('detail patch success');
+      })
+      .catch(err => console.log(err))
+    }
+
+    window.location.replace('');
   }
 
   return (
