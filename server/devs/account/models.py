@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 import uuid
 from django.conf import settings
+from django.utils import timezone
 
 # Create your models here.
 
@@ -18,7 +19,7 @@ class UserManager(BaseUserManager):
         )
         user.set_password(password)  # 비밀번호를 hash로 저장 (보안)
 
-        user.save(using=self._db)
+        user.save()
         return user
 
     def create_superuser(self, nickname, email, name, password):
@@ -45,8 +46,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    date_joined = models.DateTimeField(default=timezone.now)
+    before_last_login = models.DateTimeField(default=timezone.now)
     nickname = models.CharField(
         max_length=20,
         unique=True,

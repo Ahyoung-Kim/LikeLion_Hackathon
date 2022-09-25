@@ -1,4 +1,5 @@
 from gc import get_objects
+from urllib import response
 from django.shortcuts import render
 from rest_framework import status, viewsets
 from rest_framework.views import APIView
@@ -14,6 +15,8 @@ from profiles.models import UserImg
 
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import login, authenticate, logout
+
 # Create your views here.
 
 
@@ -56,6 +59,10 @@ class UserView(CreateAPIView):
         }
         return Response(response, status=status_code)
 
+@method_decorator(csrf_exempt, name='dispatch')
+def UserLogoutView(request): # TODO
+    logout(request)
+    return Response(status=status.HTTP_202_ACCEPTED)
 
 @method_decorator(csrf_exempt, name='dispatch')
 class UserLoginView(GenericAPIView):
@@ -77,6 +84,8 @@ class UserLoginView(GenericAPIView):
                 img = UserImg.objects.get(user_id=user.id).image
             except:
                 img = ""
+            user.before_last_login = user.last_login # mainfeed update용
+            login(request, user)
             response = {
                 "success": "true",
                 "status_code": status.HTTP_200_OK,
